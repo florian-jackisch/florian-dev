@@ -37,6 +37,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 - This plugin is **skills-only**. It does not ship agents.
 - External skills should be vendored into `skills/`, not installed globally.
 - If a newly added skill does not appear immediately after reinstalling the plugin, run `/restart`.
+- Markdown drafting can stay lightweight, but touched Markdown files should be formatted with `prettier` and linted with `markdownlint` before commit.
 
 ## MCP Servers
 
