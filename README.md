@@ -16,6 +16,10 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
 | `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 | `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
+| `planning` | Implementation planning with exact files, TDD-oriented steps, feature-branch discipline, and plan review before execution |
+| `coding` | Execution workflow with branch hygiene, reuse-first coding, red/green TDD, frequent working commits, and verification |
+| `reviewing` | Two-reviewer final review against the plan using GPT-5.4 plus Claude Sonnet/Opus, with fix-and-rereview loops |
+| `writing` | Writing workflow for specs, docs, runbooks, and other non-code tasks with audience and accuracy focus |
 | `brainstorming` | Free-form ideation with light structure, critical questions, and web research without forcing specs |
 | `interview` | Deep requirement clarification through structured follow-up questions and research loops |
 | `devils-advocate` | Pre-commitment adversarial reasoning to challenge choices before they harden |
