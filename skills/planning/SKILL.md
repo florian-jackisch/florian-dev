@@ -1,17 +1,34 @@
 ---
 name: planning
-description: 'This skill should be used when the idea is clear and the next step is to create an implementation plan. It turns requirements into a concrete execution plan with exact files, feature-branch expectations, red/green TDD steps, frequent working commits, and a plan review loop before implementation begins.'
+description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green TDD steps, frequent working commits, and a plan review loop before implementation begins.'
 ---
 
 # Planning
 
 Use this skill when the idea is clear enough to plan but implementation has not started yet.
 
+This skill is the bridge between an idea being clear and implementation beginning.
+
+It is not primarily a requirements-writing skill. Use it after `brainstorming`, `interview`, or `devils-advocate` produced enough clarity that the next useful step is an execution-ready plan.
+
 ## Relationship to Copilot CLI Plan Mode
 
 GitHub Copilot CLI already provides `/plan` and a plan mode reachable via `Shift+Tab`.
 
-Use that built-in planning flow as the default place to draft and maintain the human-readable plan. This skill adds stricter rules for what the plan must contain.
+Use that built-in planning flow as the default place to draft and maintain the human-readable plan.
+
+Think of this skill as an enhancement layer for built-in planning, not a replacement for it.
+
+Use `/plan` or plan mode to create and maintain the plan, then use this skill to make the plan more specific, more executable, and more disciplined.
+
+Specifically, this skill should make the built-in plan:
+
+- more concrete about files and task boundaries
+- more explicit about feature branches or worktrees
+- more rigorous about red/green TDD
+- more explicit about verification steps
+- more deliberate about frequent working commits
+- more likely to survive a review before coding starts
 
 ## Core Principles
 
@@ -87,11 +104,11 @@ Launch a focused review sub-agent with the `task` tool:
 - `agent_type: "general-purpose"`
 - `model: "gpt-5.4"`
 
-Populate the prompt template with the actual plan and requirements before dispatching it. Do not review the plan only in your own context if you can launch a reviewer sub-agent.
+Populate the prompt template with the actual plan and the source idea, constraints, or scope summary before dispatching it. Do not review the plan only in your own context if you can launch a reviewer sub-agent.
 
 The review should check:
 
-- missing requirements
+- missing intent coverage
 - vague or non-actionable steps
 - task ordering problems
 - hidden risks or scope creep
