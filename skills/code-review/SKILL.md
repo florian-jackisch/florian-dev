@@ -10,8 +10,7 @@ Use this skill for MR/PR review work.
 This includes:
 
 - reviewing someone else's merge request or pull request
-- reviewing your own branch or MR before requesting review
-- deciding whether your own draft MR is ready to be undrafted
+- deciding whether your own draft MR is ready to be undrafted and before requesting review
 
 ## Relationship to Copilot CLI `/review`
 
