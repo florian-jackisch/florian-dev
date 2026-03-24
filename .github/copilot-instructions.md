@@ -60,6 +60,7 @@ florian-dev/
 - Use `code-review` for MR/PR review and draft-undraft decisions; default to two reviewers, with a one-reviewer fast path only for truly tiny changes.
 - Use `git` for commit preparation and commit messages; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, and only use a short body when it adds real context.
 - Use `python` alongside `coding` or `refactoring` for Python-specific work; prefer type hints, `uv`, `ruff`, `pytest`, refactor-first test design, and named data structures over unclear tuples. If a repo has no type checker configured, still run a scoped checker on changed Python code, but keep fixes mostly to the touched area unless an obvious coupled bug appears.
+- Use `rust` alongside `coding` or `refactoring` for Rust-specific work; prefer type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, clearer structs over unclear tuples, and refactor-first testing over mock-heavy design. If a repo has no wrapped Rust verification flow, still run the relevant `cargo fmt --check`, `cargo clippy`, and `cargo test` commands for the touched crate or workspace area.
 
 ## Vendoring External Skills
 
