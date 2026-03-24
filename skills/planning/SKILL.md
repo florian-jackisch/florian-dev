@@ -103,6 +103,7 @@ Launch a focused review sub-agent with the `task` tool:
 
 - `agent_type: "general-purpose"`
 - `model: "gpt-5.4"`
+- use an explicit label such as `GPT-5.4 plan review`
 
 Populate the prompt template with the actual plan and the source idea, constraints, or scope summary before dispatching it. Do not review the plan only in your own context if you can launch a reviewer sub-agent.
 

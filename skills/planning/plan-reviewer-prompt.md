@@ -8,6 +8,7 @@ The orchestrating agent should launch a focused review sub-agent using:
 
 - `agent_type: "general-purpose"`
 - `model: "gpt-5.4"`
+- an explicit label such as `GPT-5.4 plan review`
 
 Populate the sections below before dispatching. Do not send the template with placeholders still intact.
 

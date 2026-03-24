@@ -112,13 +112,13 @@ Use the bundled `reviewer-prompt.md` as the base prompt.
 Launch separate review agents with the `task` tool, not one long self-review in your own context.
 
 - Light:
-  - reviewer 1: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
 - Medium:
-  - reviewer 1: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
-  - reviewer 2: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
+  - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
 - Hard:
-  - reviewer 1: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
-  - reviewer 2: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
+  - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - `Claude Opus 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
 
 For each reviewer, populate the prompt with:
 
