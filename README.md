@@ -46,6 +46,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 
 ## Integration Notes
 
+- `context7` should be part of normal planning and implementation workflow for current library and framework API lookups rather than treated as an optional separate skill.
 - GitHub integration should generally use Copilot CLI's built-in GitHub MCP rather than a plugin-local replacement.
 - The bundled GitLab MCP uses `glab mcp serve`, so `glab` must be installed and authenticated.
 

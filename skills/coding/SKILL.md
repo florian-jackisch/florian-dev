@@ -1,6 +1,6 @@
 ---
 name: coding
-description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, red/green/refactor execution, many small working commits, formatter/linter/test discipline, and disciplined handoff through deliberate cleanup and end-of-implementation review.'
+description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, Context7-backed API verification, red/green/refactor execution, many small working commits, formatter/linter/test discipline, and disciplined handoff through deliberate cleanup and end-of-implementation review.'
 ---
 
 # Coding
@@ -14,6 +14,7 @@ This is the execution counterpart to `planning`.
 - Do not implement substantial work on `main` or the default branch.
 - Follow the plan unless there is a concrete reason to adjust it.
 - Prefer reusing existing code over creating new abstractions.
+- Use Context7 to confirm current external library and framework APIs before coding against them.
 - Follow red/green/refactor.
 - Treat refactoring as continuous pressure, not just a final cleanup chore.
 - Keep commits small, working, and reviewable.
@@ -38,6 +39,7 @@ Before touching code:
 - identify the files involved
 - find adjacent code and tests
 - identify existing formatters, linters, build tools, and test commands
+- identify any external libraries, frameworks, or SDKs whose current APIs should be confirmed through Context7
 
 ### 2. Reuse before inventing
 
@@ -49,6 +51,18 @@ Search for:
 - existing extension points
 
 Prefer extending an existing path over creating a parallel one unless there is a strong reason not to.
+
+### 2.5. Check external APIs before inventing usage
+
+When the slice depends on a library, framework, SDK, or third-party API surface:
+
+1. use Context7 to confirm the current API shape and recommended usage
+2. prefer repository-local patterns when they already use the same dependency correctly
+3. do not invent methods, options, or config keys from memory when the docs are available
+
+Use your memory for orientation, not for final API assumptions.
+
+If Context7 cannot return useful results and the repository has no trustworthy local usage to copy, state that limitation explicitly before proceeding and only rely on behavior you can verify directly in code, tests, or tool output.
 
 ### 3. Red / Green / Refactor
 
@@ -93,6 +107,8 @@ Use the project's existing tooling when available:
 Run the relevant ones as part of the task, not just at the end if that would delay feedback too long.
 
 If the repo lacks one of these tools, do not pretend the check happened. State the limitation clearly.
+
+If the task relies on an external dependency and you did not confirm the relevant API through repo-local usage or Context7, do not pretend that lookup happened.
 
 ## End of Implementation Phase
 

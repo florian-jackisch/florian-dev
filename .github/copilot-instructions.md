@@ -54,6 +54,7 @@ florian-dev/
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
 - Use `coding` for implementation work.
+- Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
 - Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
 - Use `implementation-review` at the end of an implementation phase, not as a substitute for MR review; keep it light by default and only add a second reviewer for large or high-risk work.
@@ -90,6 +91,7 @@ Important:
 
 ## MCP Notes
 
+- Context7 is part of the normal workflow, not an optional extra. Prefer it for current library and framework API lookups during planning and implementation.
 - Prefer Copilot CLI's built-in GitHub MCP instead of bundling a duplicate GitHub integration here.
 - This plugin may bundle a GitLab MCP via `glab mcp serve`; keep that config simple and document the authentication prerequisite in `README.md`.
 

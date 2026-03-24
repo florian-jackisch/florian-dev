@@ -1,6 +1,6 @@
 ---
 name: planning
-description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green/refactor steps, deliberate cleanup checkpoints when needed, suggestions for built-in `/fleet` when work splits into well-bounded independent parallel slices, frequent working commits, and a plan review loop before implementation begins.'
+description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green/refactor steps, deliberate cleanup checkpoints when needed, Context7-backed API and library lookup planning, suggestions for built-in `/fleet` when work splits into well-bounded independent parallel slices, frequent working commits, and a plan review loop before implementation begins.'
 ---
 
 # Planning
@@ -27,6 +27,7 @@ Specifically, this skill should make the built-in plan:
 - more explicit about feature branches or worktrees
 - more rigorous about red/green TDD
 - more deliberate about where refactoring should happen
+- more deliberate about when Context7 should be used to confirm current library and framework APIs
 - more explicit about when independent work should use built-in `/fleet`
 - more explicit about verification steps
 - more deliberate about frequent working commits
@@ -38,6 +39,7 @@ Specifically, this skill should make the built-in plan:
 - Plan on a feature branch or dedicated worktree, not on `main` or the default branch.
 - Prefer red/green/refactor task breakdowns.
 - Plan explicit refactoring checkpoints when design pressure is likely to accumulate.
+- Plan when Context7 should be used to confirm current external APIs, framework behavior, and library usage instead of relying on memory.
 - Suggest built-in `/fleet` when the plan contains independent, well-bounded tasks that can be executed in parallel.
 - Keep tasks small enough to produce frequent working commits.
 - Review the plan before implementation starts.
@@ -57,6 +59,7 @@ Every implementation plan should include:
 - the proposed architecture or approach
 - the files likely to change or be created
 - explicit assumptions and constraints
+- if the work depends on external libraries or frameworks, which ones need current API confirmation via Context7
 - a task sequence that an implementer can follow without guessing
 - the verification approach for each task
 - where refactoring should happen if the work is likely to create structural pressure
@@ -103,6 +106,7 @@ A good plan is:
 - specific enough that file paths and responsibilities are visible
 - small-step enough that progress can be checked continuously
 - realistic about testing, migration, rollout, and risk
+- explicit about where current library or framework docs should be consulted through Context7
 - explicit about where linters, formatters, builds, and tests fit
 - aligned with existing repo patterns instead of inventing a new architecture casually
 
@@ -139,6 +143,7 @@ The review should check:
 - task ordering problems
 - missed opportunities to use built-in `/fleet` for truly independent work
 - hidden risks or scope creep
+- places where the plan assumes library APIs without checking current documentation
 - whether the TDD and verification path is actually executable
 
 If the review finds real gaps, fix the plan and review it again.
@@ -154,6 +159,10 @@ Once the plan is approved, execution should normally use:
 - `code-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
 
 Built-in `/fleet` is an orchestration tool, not a replacement for those workflows.
+
+Context7 is a workflow dependency, not a separate planning replacement.
+
+If the plan depends on external libraries, frameworks, SDKs, or APIs, call out where implementation should consult Context7 before coding the integration details.
 
 If the plan recommends built-in `/fleet`, specify:
 
