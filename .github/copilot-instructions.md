@@ -1,148 +1,95 @@
-# Copilot Instructions — florian-dev Plugin
+# Copilot Instructions — florian-dev
 
-This repository is a personal GitHub Copilot CLI plugin. It bundles curated
-skills, agents, and MCP server configuration into a single installable package.
+This repository is a **skills-only** GitHub Copilot CLI plugin.
 
 ## Plugin Identity
 
-- **Name:** `florian-dev`
-- **Install:** `/plugin install florian-jackisch/florian-dev`
-- **Format:** Standalone plugin (plugin.json at repo root)
+- Name: `florian-dev`
+- Install: `/plugin install florian-jackisch/florian-dev`
+- Format: standalone plugin with `plugin.json` at repo root
+- Scope: curated repo-local skills plus shared MCP config
 
 ## Repository Layout
 
-```
+```text
 florian-dev/
-├── plugin.json          # Plugin manifest
-├── .mcp.json            # MCP server configuration
-├── skills/              # One subfolder per skill
+├── plugin.json
+├── .mcp.json
+├── skills/
 │   └── <skill-name>/
-│       ├── SKILL.md     # Required: skill definition with frontmatter
-│       └── [assets]     # Optional: scripts, templates, data (<5 MB each)
-├── agents/              # One file per agent
-│   └── <name>.agent.md  # Agent definition with frontmatter
+│       ├── SKILL.md
+│       └── [scripts|references|examples|assets]
 ├── .github/
-│   └── copilot-instructions.md   # This file
+│   └── copilot-instructions.md
 ├── README.md
-├── .gitignore
 └── LICENSE
 ```
 
-## Adding a New Skill
+## Core Rules
 
-1. Create a new directory under `skills/` using lowercase-kebab-case:
-   ```
-   skills/my-new-skill/
-   ```
+- This plugin does **not** use agents. Do not add an `agents/` directory or an `agents` entry to `plugin.json`.
+- Keep names lowercase-kebab-case.
+- Keep skill `name` equal to the folder name.
+- Write skill descriptions in third person with concrete trigger phrases.
+- Prefer repo-local skills. Do **not** install skills globally.
 
-2. Create `SKILL.md` inside it with YAML frontmatter:
-   ```markdown
-   ---
-   name: my-new-skill
-   description: "Clear, specific description of what this skill does and when it should be triggered."
-   ---
+## Adding or Adapting a Skill
 
-   # My New Skill
-
-   Instructions for the skill...
-   ```
-
-3. **Frontmatter rules:**
-   - `name` must match the folder name exactly (lowercase-kebab-case, max 64 chars)
-   - `description` must be 10–1024 characters, non-empty, and specific enough
-     that the LLM can decide when to invoke this skill vs others
-
-4. Optional: add bundled assets (scripts, templates, data files) alongside
-   `SKILL.md`. Reference them from the skill content using relative paths.
-
-5. Update `README.md` to list the new skill in the table.
-
-## Adding a New Agent
-
-1. Create a file in `agents/` named `<agent-name>.agent.md` (lowercase-kebab-case):
-   ```
-   agents/my-agent.agent.md
-   ```
-
+1. Create `skills/<skill-name>/SKILL.md`.
 2. Add YAML frontmatter:
-   ```markdown
-   ---
-   name: my-agent
-   description: "When and why to use this agent."
-   model: inherit
-   ---
+   - `name`
+   - `description`
+3. Add optional support files only when useful:
+   - `scripts/`
+   - `references/`
+   - `examples/`
+   - `assets/`
+4. Update `README.md`.
+5. Bump `plugin.json` version before pushing.
 
-   You are an expert in...
-   ```
+## Vendoring External Skills
 
-3. **Frontmatter fields:**
-   - `name` — matches the filename (without `.agent.md`)
-   - `description` — concise trigger description; include example scenarios
-   - `model` — use `inherit` to follow the user's selected model, or pin a
-     specific model ID (e.g., `claude-sonnet-4.6`)
-   - `tools` — optional array of tool names the agent can use
+When bringing in a skill from `skills.sh`, vendor it into this repository instead of leaving it in agent-managed locations.
 
-4. Update `README.md` to list the new agent.
+Preferred workflow:
 
-## MCP Servers
-
-MCP servers are declared in `.mcp.json` at the repo root and referenced from
-`plugin.json` via the `mcpServers` field.
-
-To add a new MCP server, add an entry under `mcpServers`:
-```json
-{
-  "mcpServers": {
-    "server-name": {
-      "command": "npx",
-      "args": ["-y", "@scope/package-name"]
-    }
-  }
-}
+```bash
+skills/find-skills/scripts/vendor-skill.sh <package> <skill-name>
 ```
 
-Currently bundled:
-- **context7** — library documentation lookups via Context7 API
+Example:
 
-## Naming Conventions
+```bash
+skills/find-skills/scripts/vendor-skill.sh vercel-labs/skills find-skills
+```
 
-- **Directories and files:** lowercase-kebab-case everywhere
-- **Skill names:** must match their folder name
-- **Agent names:** must match their filename (minus `.agent.md`)
-- **Plugin name:** always `florian-dev` — do not change it
+This uses `npx skills add ... --agent github-copilot --copy` in a temporary directory, copies the full installed skill tree into `./skills/<skill-name>/`, and cleans up afterward.
+
+Important:
+
+- Do not use `-g`.
+- Do not rely on `~/.agents/skills` or other global skill state.
+- Review vendored files before committing.
 
 ## Versioning
 
-Follow semantic versioning in `plugin.json`:
-- **Patch** (0.1.x): skill/agent content tweaks, description improvements
-- **Minor** (0.x.0): new skill or agent added
-- **Major** (x.0.0): breaking changes to existing skills/agents
-
-Bump the version in `plugin.json` before pushing changes.
+- Patch (`0.2.x`): documentation updates, description tweaks, non-breaking skill refinements
+- Minor (`0.x.0`): new skill added
+- Major (`x.0.0`): breaking changes to existing skills
 
 ## Commit Conventions
 
-- Single summary line, max 72 characters, no conventional-commit prefixes
-- Add a brief explanatory paragraph only when the summary is insufficient
-- Never add `Co-authored-by` trailers
+- Single summary line, max 72 characters
+- No conventional-commit prefixes
+- No `Co-authored-by` trailers
 
-## Testing Locally
+## Local Verification
 
-After making changes, reinstall the plugin to verify:
-```
-/plugin install florian-jackisch/florian-dev
-```
+After changes:
 
-Then check:
-- `/skills` — verify new skills appear with correct names and descriptions
-- `/agent` — verify new agents appear
-- Invoke a skill and confirm it behaves as expected
-
-## Adapting External Skills
-
-When copying a skill from an external source:
-1. Create the skill directory and SKILL.md as described above
-2. Adapt the content to your personal preferences and workflow
-3. Ensure the `name` and `description` frontmatter are updated
-4. Remove any references to the original author's specific setup
-5. Test the skill locally before committing
+1. Reinstall the plugin:
+   ```text
+   /plugin install florian-jackisch/florian-dev
+   ```
+2. Check `/skills`.
+3. If the current session does not pick up a new skill immediately, run `/restart`.

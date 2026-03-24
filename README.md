@@ -1,31 +1,31 @@
 # florian-dev
 
-Personal GitHub Copilot CLI plugin — curated skills and agents for everyday development.
+Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday development.
 
 ## Install
 
-```
+```text
 /plugin install florian-jackisch/florian-dev
 ```
 
-## Skills
+## Included Skills
 
 | Skill | Description |
 |-------|-------------|
-| `skill-development` | Guidance for creating effective skills — structure, frontmatter, progressive disclosure, validation |
+| `skill-development` | Guidance for creating effective skills — structure, frontmatter, progressive disclosure, and validation |
 | `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
 
-## Agents
+## Notes
 
-| Agent | Description |
-|-------|-------------|
-| *(none yet)* | Agents will be added incrementally |
+- This plugin is **skills-only**. It does not ship agents.
+- External skills should be vendored into `skills/`, not installed globally.
+- If a newly added skill does not appear immediately after reinstalling the plugin, run `/restart`.
 
 ## MCP Servers
 
 | Server | Purpose |
 |--------|---------|
-| context7 | Library documentation lookups |
+| `context7` | Library documentation lookups |
 
 ## License
 

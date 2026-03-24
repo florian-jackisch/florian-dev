@@ -1,7 +1,7 @@
 {
   "name": "florian-dev",
-  "description": "Personal GitHub Copilot CLI plugin \u2014 curated skills and agents for everyday development.",
-  "version": "0.2.0",
+  "description": "Personal GitHub Copilot CLI plugin \u2014 curated repo-local skills for everyday development.",
+  "version": "0.2.1",
   "author": {
     "name": "Florian Jackisch"
   },
@@ -13,7 +13,6 @@
     "skills",
     "productivity"
   ],
-  "agents": "agents/",
   "skills": "skills/",
   "mcpServers": ".mcp.json"
 }
