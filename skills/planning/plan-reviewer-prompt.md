@@ -33,6 +33,8 @@ Check for:
 - missing file-level guidance where specificity matters
 - bad task ordering
 - missing red/green test flow
+- incorrect use of built-in `/fleet` for work that is not truly independent
+- missing boundaries, integration steps, or verification for any planned `/fleet` work
 - missing verification steps
 - missing branch or commit discipline
 - hidden risk that should appear in the plan

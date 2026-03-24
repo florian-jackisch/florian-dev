@@ -1,6 +1,6 @@
 ---
 name: planning
-description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green/refactor steps, deliberate cleanup checkpoints when needed, frequent working commits, and a plan review loop before implementation begins.'
+description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green/refactor steps, deliberate cleanup checkpoints when needed, suggestions for built-in `/fleet` when work splits into well-bounded independent parallel slices, frequent working commits, and a plan review loop before implementation begins.'
 ---
 
 # Planning
@@ -27,6 +27,7 @@ Specifically, this skill should make the built-in plan:
 - more explicit about feature branches or worktrees
 - more rigorous about red/green TDD
 - more deliberate about where refactoring should happen
+- more explicit about when independent work should use built-in `/fleet`
 - more explicit about verification steps
 - more deliberate about frequent working commits
 - more likely to survive a review before coding starts
@@ -37,6 +38,7 @@ Specifically, this skill should make the built-in plan:
 - Plan on a feature branch or dedicated worktree, not on `main` or the default branch.
 - Prefer red/green/refactor task breakdowns.
 - Plan explicit refactoring checkpoints when design pressure is likely to accumulate.
+- Suggest built-in `/fleet` when the plan contains independent, well-bounded tasks that can be executed in parallel.
 - Keep tasks small enough to produce frequent working commits.
 - Review the plan before implementation starts.
 
@@ -58,6 +60,8 @@ Every implementation plan should include:
 - a task sequence that an implementer can follow without guessing
 - the verification approach for each task
 - where refactoring should happen if the work is likely to create structural pressure
+- whether any tasks should be delegated via built-in `/fleet`
+- how parallel results, if any, will be integrated and verified afterward
 - the commit rhythm
 
 ## Task Structure
@@ -76,6 +80,21 @@ For coding tasks, prefer this shape:
 Do not bundle many red/green cycles into one giant task.
 
 For medium or hard work, the plan should also say whether there should be a deliberate `refactoring` checkpoint before `implementation-review`.
+
+When the work naturally splits into independent domains, the plan should also say whether built-in `/fleet` should be used for parallel subagents.
+
+Good `/fleet` candidates usually have:
+
+- clearly separated files, subsystems, or failure domains
+- minimal shared state between tasks
+- well-defined inputs and expected outputs for each subagent
+- integration work that can happen after the parallel slices return
+
+Avoid suggesting `/fleet` when:
+
+- tasks are tightly coupled and likely to affect the same files
+- one investigation will probably resolve the others
+- the work depends on a shared evolving design that should stay in one context
 
 ## Plan Quality Bar
 
@@ -118,6 +137,7 @@ The review should check:
 - missing intent coverage
 - vague or non-actionable steps
 - task ordering problems
+- missed opportunities to use built-in `/fleet` for truly independent work
 - hidden risks or scope creep
 - whether the TDD and verification path is actually executable
 
@@ -133,6 +153,21 @@ Once the plan is approved, execution should normally use:
 - `implementation-review` at the end of an implementation phase before handoff or the next workflow step
 - `code-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
 
+Built-in `/fleet` is an orchestration tool, not a replacement for those workflows.
+
+If the plan recommends built-in `/fleet`, specify:
+
+- which tasks should become parallel subagents
+- the boundary for each subagent
+- what context each subagent needs
+- how results will be integrated and verified afterward
+
+Parallel subagents should still execute through the normal workflow for their slice:
+
+- use `coding` for code-producing subagents
+- use `writing` for documentation-heavy subagents
+- return to the main execution flow to integrate results, rerun verification, and continue toward `implementation-review`
+
 ## Red Flags
 
 Stop and rework the plan if:
@@ -140,6 +175,7 @@ Stop and rework the plan if:
 - tasks are too large to finish safely in one green cycle
 - the plan skips tests until the end
 - the plan assumes implementation on `main`
+- the plan suggests `/fleet` for tightly coupled work without clear boundaries
 - file changes are vague
 - there are no explicit verification steps
 - commit points are missing

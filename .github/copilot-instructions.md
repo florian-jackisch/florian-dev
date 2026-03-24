@@ -52,6 +52,7 @@ florian-dev/
 ## Workflow Fit
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
+- During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
 - Use `coding` for implementation work.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
 - Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
