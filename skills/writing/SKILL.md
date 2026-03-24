@@ -89,7 +89,7 @@ Check:
 - use `brainstorming` when the ideas are still loose
 - use `planning` when the output is an implementation plan
 - use `coding` for executable behavior changes
-- use `reviewing` when written work needs a structured final review
+- use `implementation-review` when written work needs a structured final review
 
 ## Red Flags
 

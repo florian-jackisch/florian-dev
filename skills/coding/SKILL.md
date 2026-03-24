@@ -1,6 +1,6 @@
 ---
 name: coding
-description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, red/green TDD, many small working commits, formatter/linter/test discipline, and review before merge.'
+description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, red/green TDD, many small working commits, formatter/linter/test discipline, and disciplined end-of-implementation review handoff.'
 ---
 
 # Coding
@@ -89,15 +89,17 @@ Run the relevant ones as part of the task, not just at the end if that would del
 
 If the repo lacks one of these tools, do not pretend the check happened. State the limitation clearly.
 
-## Review Before Merge
+## End of Implementation Phase
 
-Before merging back to `main`:
+At the end of an implementation phase:
 
 - compare the implementation against the plan
-- run `reviewing`
+- run `implementation-review`
 - fix material findings
 - rerun verification
-- review again if the fixes are non-trivial
+- rerun implementation review if the fixes are non-trivial
+
+If the next step is MR/PR review or deciding whether a draft MR should be undrafted, run `code-review`.
 
 ## When to Pause and Push Back
 

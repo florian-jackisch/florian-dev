@@ -91,7 +91,7 @@ The plan should explicitly call for:
 - a feature branch or worktree
 - many small working commits
 - commit points after meaningful green states
-- review before merge back to `main`
+- review checkpoints before handoff and before merge back to `main`
 
 ## Review the Plan Before Execution
 
@@ -122,7 +122,8 @@ Once the plan is approved, execution should normally use:
 
 - `coding` for implementation work
 - `writing` for documentation-heavy tasks
-- `reviewing` before merge or final sign-off
+- `implementation-review` at the end of an implementation phase before handoff or the next workflow step
+- `code-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
 
 ## Red Flags
 
