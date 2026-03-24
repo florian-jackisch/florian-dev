@@ -14,6 +14,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 |-------|-------------|
 | `skill-development` | Guidance for creating effective skills — structure, frontmatter, progressive disclosure, and validation |
 | `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
+| `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 
 ## Notes
 
