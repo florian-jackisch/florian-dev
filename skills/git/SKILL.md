@@ -98,7 +98,7 @@ Before pushing, check:
 - relevant tests or checks have run
 - the branch is appropriate for the work
 
-If the next step is MR / PR review, use `code-review` after the branch is in a coherent state.
+If the next step is MR / PR review, use `final-review` after the branch is in a coherent state.
 
 ## Safety Rules
 

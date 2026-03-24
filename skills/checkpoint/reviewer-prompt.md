@@ -1,6 +1,6 @@
-# Implementation Review Prompt
+# Checkpoint Review Prompt
 
-Review the implementation against the plan, source idea, or agreed scope.
+Review the current plan or implementation slice against the plan, source idea, or agreed scope.
 
 ## Inputs
 
@@ -23,18 +23,19 @@ The orchestrating agent must populate these before dispatching the reviewer.
 
 ## Check
 
-- Does the implementation satisfy the plan or intended scope?
+- Does the current plan or implementation slice satisfy the intended direction so far?
 - Are meaningful requirements or behaviors missing?
 - Are there logic bugs, regressions, or unsafe assumptions?
 - Is the verification convincing for the changed behavior?
 - Are there security, data-loss, migration, or blast-radius concerns?
+- Is refactoring pressure or scope drift building up enough that work should pause before continuing?
 
 ## Severity
 
 Use:
 
-- Critical: must fix before the implementation phase can be called complete
-- Important: should fix before handoff unless there is a clear reason not to
+- Critical: must fix before continuing
+- Important: should fix before the next meaningful step unless there is a clear reason not to
 - Minor: worthwhile but non-blocking
 
 ## Output Format
@@ -52,7 +53,7 @@ Use:
 - [file:line if possible] [issue] - [why it matters]
 
 ### Assessment
-**Implementation phase complete?** Yes | With fixes | No
+**Checkpoint outcome:** Continue coding | Refactor first | Fix before continuing
 
 **Reasoning:**
 - ...

@@ -1,17 +1,17 @@
 ---
 name: refactoring
-description: 'This skill should be used when code should be refactored, technical debt should be reduced, a design should be cleaned up, or a workflow calls for a deliberate cleanup pass before `implementation-review`. It focuses on behavior-preserving change, small safe steps, and choosing between local red/green/refactor cleanup and a dedicated refactoring checkpoint.'
+description: 'This skill should be used when code should be refactored, technical debt should be reduced, a design should be cleaned up, or a workflow calls for a deliberate cleanup pass before `checkpoint`. It focuses on behavior-preserving change, small safe steps, and choosing between local red/green/refactor cleanup and a dedicated refactoring checkpoint.'
 ---
 
 # Refactoring
 
 Use this skill when the goal is to improve the structure of existing code without changing its intended behavior.
 
-This skill complements `coding` and `implementation-review`.
+This skill complements `coding` and `checkpoint`.
 
 - use `coding` for feature or bug-fix execution
 - use `refactoring` when cleanup needs deliberate focus
-- use `implementation-review` to check whether important refactoring pressure was ignored
+- use `checkpoint` to check whether important refactoring pressure was ignored
 
 ## Core Rules
 
@@ -28,7 +28,7 @@ Use this skill when:
 - code is hard to extend, name, or reason about
 - duplication is spreading across a feature slice
 - a red/green cycle passed, but the result is awkward or brittle
-- the next useful step is cleanup before `implementation-review`
+- the next useful step is cleanup before `checkpoint`
 - a review found structural issues that should be fixed before the phase is called done
 
 ## When Not to Use
@@ -48,10 +48,10 @@ The default workflow is hybrid:
    - After a test turns green, do the small cleanup that obviously improves clarity.
    - Examples: rename for clarity, extract a helper, remove duplication introduced by the change, simplify branching.
 2. **Deliberate refactoring checkpoint**
-   - If design pressure accumulates across a slice, pause before `implementation-review` and do a focused cleanup pass.
+   - If design pressure accumulates across a slice, pause before `checkpoint` and do a focused cleanup pass.
    - Use this when the right cleanup crosses files, reshapes boundaries, or deserves its own verification pass.
-3. **Implementation review backstop**
-   - `implementation-review` should still ask whether material refactoring opportunities were left behind.
+3. **Checkpoint backstop**
+   - `checkpoint` should still ask whether material refactoring opportunities were left behind.
 
 Do **not** force every working commit to include refactoring. Small cleanup is normal; bigger cleanup should be explicit.
 
@@ -127,4 +127,4 @@ At the end of a deliberate refactoring pass, summarize:
 - what verification ran
 - what cleanup was intentionally deferred
 
-If the implementation slice is otherwise complete, move to `implementation-review`.
+If the implementation slice is otherwise complete, move to `checkpoint`.

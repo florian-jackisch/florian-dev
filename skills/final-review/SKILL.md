@@ -1,9 +1,9 @@
 ---
-name: code-review
-description: 'This skill should be used when reviewing a merge request or pull request, when asked to perform a code review, or when checking whether your own draft MR/PR is in good enough shape to be undrafted. It drives a practical review workflow focused on correctness, risk, test coverage, reviewer comments, clear review verdicts, and a default two-reviewer path for thorough MR review.'
+name: final-review
+description: 'This skill should be used when reviewing a merge request or pull request, when asked to perform a final code review, or when checking whether your own draft MR/PR is in good enough shape to be undrafted. It drives a practical end-of-MR review workflow focused on correctness, risk, test coverage, reviewer comments, clear review verdicts, a default two-reviewer path, and optional built-in `/fleet` orchestration for especially large or high-risk reviews.'
 ---
 
-# Code Review
+# Final Review
 
 Use this skill for MR/PR review work.
 
@@ -140,6 +140,27 @@ When you use the two-reviewer path, launch separate review agents with the `task
 - `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
 - for especially hard or high-risk work, replace the Sonnet reviewer with `Claude Opus 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
 
+### Large / high-risk review with built-in `/fleet`
+
+For especially large or high-risk MRs, built-in `/fleet` can help orchestrate parallel review work.
+
+Treat this as an escalation, not the default.
+
+Good `/fleet` review candidates usually have:
+
+- clearly separated subsystems or file groups
+- distinct review concerns such as security, correctness, and test coverage
+- enough scope that one reviewer pair would become slow or noisy
+
+If you use built-in `/fleet` for review, define:
+
+- which reviewer checks which files or concern areas
+- what shared MR context each reviewer needs
+- how duplicate comments will be deduplicated
+- who synthesizes the final blocking versus advisory verdict
+
+Do not use `/fleet` to create a pile of unsynthesized comments. Parallel review only helps if one pass combines the findings into a coherent final verdict.
+
 ## Draft-vs-Ready Heuristic
 
 A draft MR should usually stay draft if:
@@ -183,4 +204,4 @@ A draft MR is usually ready to undraft if:
 - focusing on style while missing logic or test gaps
 - failing to separate blocking from advisory feedback
 - saying a draft is ready when core checks are still missing
-- using implementation-review when the real task is MR/PR review
+- using `checkpoint` when the real task is MR/PR review

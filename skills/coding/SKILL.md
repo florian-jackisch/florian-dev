@@ -79,7 +79,7 @@ If the project has no automated tests for the area, create the smallest realisti
 
 Small local refactors after a green test are normal. Do not force every working commit to include a broader refactor just for the sake of it.
 
-If structural pressure accumulates across the slice, use `refactoring` for a deliberate cleanup checkpoint before `implementation-review` rather than waiting until final review to notice the debt.
+If structural pressure accumulates across the slice, use `refactoring` for a deliberate cleanup checkpoint before `checkpoint` rather than waiting until final review to notice the debt.
 
 ### 4. Commit rhythm
 
@@ -116,12 +116,12 @@ At the end of an implementation phase:
 
 - compare the implementation against the plan
 - run `refactoring` first if the slice accumulated meaningful design pressure, duplication, or awkward boundaries that deserve a focused cleanup pass
-- run `implementation-review`
+- run `checkpoint`
 - fix material findings
 - rerun verification
-- rerun implementation review if the fixes are non-trivial
+- rerun the checkpoint if the fixes are non-trivial
 
-If the next step is MR/PR review or deciding whether a draft MR should be undrafted, run `code-review`.
+If the next step is MR/PR review or deciding whether a draft MR should be undrafted, run `final-review`.
 
 ## When to Pause and Push Back
 

@@ -24,8 +24,8 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `planning` | Implementation planning with exact files, red/green/refactor task structure, feature-branch discipline, built-in `/fleet` suggestions for well-bounded independent parallel work, and plan review before execution |
 | `coding` | Execution workflow with branch hygiene, reuse-first coding, red/green/refactor cadence, deliberate cleanup when needed, and verification |
 | `refactoring` | Behavior-preserving cleanup workflow for small in-cycle refactors and deliberate pre-review refactoring checkpoints |
-| `implementation-review` | End-of-implementation review against the plan or scope, with light default review for routine slices, deeper review only for large or high-risk work, and fix-and-rereview loops |
-| `code-review` | MR/PR review workflow for reviewing others' changes or deciding whether your own draft is ready to undraft, with a default two-reviewer path and a tiny-change fast path |
+| `checkpoint` | In-progress review checkpoint for planning or implementation, with one opposite-family reviewer by default, plan/slice awareness, refactoring-pressure checks, and a fast fix-and-continue loop |
+| `final-review` | Heavy MR/PR review workflow for reviewing others' changes or deciding whether your own draft is ready to undraft, with a default two-reviewer path, a tiny-change fast path, and optional `/fleet` escalation for especially large or high-risk reviews |
 | `writing` | Writing workflow for specs, docs, runbooks, and other non-code tasks with audience and accuracy focus |
 | `brainstorming` | Free-form ideation with light structure, critical questions, and web research without forcing specs |
 | `interview` | Deep requirement clarification through structured follow-up questions and research loops |

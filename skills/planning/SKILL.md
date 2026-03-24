@@ -82,7 +82,7 @@ For coding tasks, prefer this shape:
 
 Do not bundle many red/green cycles into one giant task.
 
-For medium or hard work, the plan should also say whether there should be a deliberate `refactoring` checkpoint before `implementation-review`.
+For medium or hard work, the plan should also say whether there should be a deliberate `refactoring` checkpoint before `checkpoint`.
 
 When the work naturally splits into independent domains, the plan should also say whether built-in `/fleet` should be used for parallel subagents.
 
@@ -155,8 +155,8 @@ Once the plan is approved, execution should normally use:
 - `coding` for implementation work
 - `refactoring` for deliberate cleanup before the end of an implementation phase
 - `writing` for documentation-heavy tasks
-- `implementation-review` at the end of an implementation phase before handoff or the next workflow step
-- `code-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
+- `checkpoint` when planning or implementation work should pause for a light opposite-family sanity check before continuing
+- `final-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
 
 Built-in `/fleet` is an orchestration tool, not a replacement for those workflows.
 
@@ -175,7 +175,7 @@ Parallel subagents should still execute through the normal workflow for their sl
 
 - use `coding` for code-producing subagents
 - use `writing` for documentation-heavy subagents
-- return to the main execution flow to integrate results, rerun verification, and continue toward `implementation-review`
+- return to the main execution flow to integrate results, rerun verification, and continue toward `checkpoint` or `final-review` as appropriate
 
 ## Red Flags
 
