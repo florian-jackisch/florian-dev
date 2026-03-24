@@ -89,6 +89,7 @@ Check:
 - use `brainstorming` when the ideas are still loose
 - use `planning` when the output is an implementation plan
 - use `coding` for executable behavior changes
+- use `mermaid` when Markdown documentation would benefit from diagrams
 - use `checkpoint` when written work benefits from an in-progress sanity check before broader handoff
 
 ## Red Flags

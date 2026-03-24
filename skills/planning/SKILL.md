@@ -154,6 +154,7 @@ Once the plan is approved, execution should normally use:
 
 - `coding` for implementation work
 - `refactoring` for deliberate cleanup before the end of an implementation phase
+- `mermaid` when the plan or architecture outline would be clearer with diagrams in Markdown
 - `writing` for documentation-heavy tasks
 - `checkpoint` when planning or implementation work should pause for a light opposite-family sanity check before continuing
 
@@ -173,6 +174,7 @@ If the plan recommends built-in `/fleet`, specify:
 Parallel subagents should still execute through the normal workflow for their slice:
 
 - use `coding` for code-producing subagents
+- use `mermaid` when a subagent's output should include Mermaid diagrams in Markdown
 - use `writing` for documentation-heavy subagents
 - return to the main execution flow to integrate results, rerun verification, and continue toward `checkpoint` or ordinary implementation work as appropriate
 

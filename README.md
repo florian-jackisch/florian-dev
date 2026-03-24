@@ -27,6 +27,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `checkpoint` | In-progress review checkpoint for planning or implementation, with one opposite-family reviewer by default, plan/slice awareness, refactoring-pressure checks, and a fast fix-and-continue loop |
 | `final-review` | Heavy MR/PR review workflow for reviewing others' changes or deciding whether your own draft is ready to undraft, with a default two-reviewer path, a tiny-change fast path, and optional `/fleet` escalation for especially large or high-risk reviews |
 | `writing` | Writing workflow for specs, docs, runbooks, and other non-code tasks with audience and accuracy focus |
+| `mermaid` | Mermaid diagram companion workflow for Markdown docs and plans, with diagram-type selection, focused syntax, maintainable embedded diagrams, and a docs-first bias over polished rendering pipelines |
 | `brainstorming` | Free-form ideation with light structure, critical questions, and web research without forcing specs |
 | `interview` | Deep requirement clarification through structured follow-up questions and research loops |
 | `devils-advocate` | Pre-commitment adversarial reasoning to challenge choices before they harden |
