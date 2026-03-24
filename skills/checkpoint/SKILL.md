@@ -32,7 +32,7 @@ Use this skill:
 - when a change feels coherent but you want one fresh reviewer family to challenge it
 - before escalating to a heavier final MR review
 
-If the goal is to review an MR/PR as a review artifact, decide whether a draft MR is ready to undraft, or produce a merge-oriented verdict, use `final-review` instead.
+If the goal is to review an MR/PR as a review artifact, decide whether a draft MR is ready to undraft, or produce a merge-oriented verdict, stop using this lighter workflow and switch to the dedicated MR review skill on explicit request.
 
 ## Core Principles
 
@@ -52,7 +52,7 @@ Use one reviewer only.
 - if the current work was mainly done by a Claude-family model, prefer `GPT-5.4 review`
 - if the implementation family is unclear, choose one reviewer and still prefer the opposite family when you can
 
-Escalate beyond one reviewer only if the "light" checkpoint has clearly stopped being light. At that point, either split the work into smaller slices or move toward `final-review`.
+Escalate beyond one reviewer only if the "light" checkpoint has clearly stopped being light. At that point, either split the work into smaller slices or pause and decide deliberately whether a heavier review is actually needed.
 
 ## Review Inputs
 
@@ -123,7 +123,7 @@ At the end, present:
 - what the reviewer found
 - what was fixed
 - what was intentionally deferred
-- whether to continue coding, refactor first, or move toward `final-review`
+- whether to continue coding, refactor first, or pause for a deliberate heavier review decision
 
 ## What This Skill Is Not For
 
@@ -133,7 +133,7 @@ Do not use this skill as the primary workflow for:
 - approval-style merge decisions
 - deciding whether a draft MR is ready to undraft as a final gate
 
-Use `final-review` for those.
+Use the dedicated MR review skill for those, but only when that heavier review is explicitly requested.
 
 ## Red Flags
 

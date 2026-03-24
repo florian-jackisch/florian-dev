@@ -98,7 +98,7 @@ Before pushing, check:
 - relevant tests or checks have run
 - the branch is appropriate for the work
 
-If the next step is MR / PR review, use `final-review` after the branch is in a coherent state.
+Do not automatically route git workflow into `final-review`. Use that heavier MR review only when the user explicitly asks for an MR / PR review or draft-undraft decision.
 
 ## Safety Rules
 

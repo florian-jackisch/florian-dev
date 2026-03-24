@@ -121,7 +121,7 @@ At the end of an implementation phase:
 - rerun verification
 - rerun the checkpoint if the fixes are non-trivial
 
-If the next step is MR/PR review or deciding whether a draft MR should be undrafted, run `final-review`.
+Do not automatically route implementation work into `final-review`. That heavier MR review should only happen on explicit request, such as when asked to review the MR or decide whether a draft is ready to undraft.
 
 ## When to Pause and Push Back
 

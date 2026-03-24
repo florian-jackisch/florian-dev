@@ -89,7 +89,7 @@ Check:
 - use `brainstorming` when the ideas are still loose
 - use `planning` when the output is an implementation plan
 - use `coding` for executable behavior changes
-- use `final-review` when completed written work needs a structured final review
+- use `checkpoint` when written work benefits from an in-progress sanity check before broader handoff
 
 ## Red Flags
 
