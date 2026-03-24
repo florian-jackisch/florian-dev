@@ -3,6 +3,10 @@
     "context7": {
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "gitlab": {
+      "command": "glab",
+      "args": ["mcp", "serve"]
     }
   }
 }

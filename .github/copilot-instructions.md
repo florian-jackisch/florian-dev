@@ -58,6 +58,7 @@ florian-dev/
 - Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
 - Use `implementation-review` at the end of an implementation phase, not as a substitute for MR review; keep it light by default and only add a second reviewer for large or high-risk work.
 - Use `code-review` for MR/PR review and draft-undraft decisions; default to two reviewers, with a one-reviewer fast path only for truly tiny changes.
+- Use `git` for commit preparation and commit messages; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, and only use a short body when it adds real context.
 
 ## Vendoring External Skills
 
@@ -82,6 +83,11 @@ Important:
 - Do not use `-g`.
 - Do not rely on `~/.agents/skills` or other global skill state.
 - Review vendored files before committing.
+
+## MCP Notes
+
+- Prefer Copilot CLI's built-in GitHub MCP instead of bundling a duplicate GitHub integration here.
+- This plugin may bundle a GitLab MCP via `glab mcp serve`; keep that config simple and document the authentication prerequisite in `README.md`.
 
 ## Versioning
 

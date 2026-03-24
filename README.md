@@ -16,6 +16,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
 | `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 | `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
+| `git` | Git hygiene and commit workflow with human commit messages, no conventional prefixes, and no `Co-authored-by` trailers |
 | `planning` | Implementation planning with exact files, red/green/refactor task structure, feature-branch discipline, built-in `/fleet` suggestions for well-bounded independent parallel work, and plan review before execution |
 | `coding` | Execution workflow with branch hygiene, reuse-first coding, red/green/refactor cadence, deliberate cleanup when needed, and verification |
 | `refactoring` | Behavior-preserving cleanup workflow for small in-cycle refactors and deliberate pre-review refactoring checkpoints |
@@ -37,6 +38,12 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | Server | Purpose |
 |--------|---------|
 | `context7` | Library documentation lookups |
+| `gitlab` | GitLab MCP via `glab mcp serve` for GitLab issues, merge requests, pipelines, and related workflows |
+
+## Integration Notes
+
+- GitHub integration should generally use Copilot CLI's built-in GitHub MCP rather than a plugin-local replacement.
+- The bundled GitLab MCP uses `glab mcp serve`, so `glab` must be installed and authenticated.
 
 ## License
 
