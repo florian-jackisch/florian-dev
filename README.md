@@ -12,7 +12,7 @@ Personal GitHub Copilot CLI plugin — curated skills and agents for everyday de
 
 | Skill | Description |
 |-------|-------------|
-| *(none yet)* | Skills will be added incrementally |
+| `skill-development` | Guidance for creating effective skills — structure, frontmatter, progressive disclosure, validation |
 
 ## Agents
 
