@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+._*
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
