@@ -17,12 +17,12 @@ These lived in `~/Documents/agents/global/skills/` (symlinked to `~/.copilot/ski
 
 | Skill | Description | Status |
 |-------|-------------|--------|
-| `brainstorming` | Explores user intent, requirements, and design before any creative/implementation work. | ⏳ Evaluate |
+| `brainstorming` | Explores user intent, requirements, and design before creative/implementation work. | ✅ Added and adapted |
 | `context7` | Fetch up-to-date library documentation via Context7 API. | ⏳ Evaluate |
-| `devils-advocate` | Forces adversarial reasoning before committing to architectural choices or approach selection. | ⏳ Evaluate |
+| `devils-advocate` | Forces adversarial reasoning before committing to architectural choices or approach selection. | ✅ Added and adapted |
 | `find-skills` | Helps discover and install agent skills when asked "how do I do X" or "find a skill for". | ✅ Added and adapted |
 | `gitlab-ci-patterns` | Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners. | ⏳ Evaluate |
-| `skill-creator` | Create, modify, improve, and benchmark skills. Run evals and optimize descriptions. | ⏳ Evaluate |
+| `skill-creator` | Create, modify, improve, and benchmark skills. Run evals and optimize descriptions. | ✅ Added as `skill-development` |
 
 ## Previously Installed Global Instructions
 
