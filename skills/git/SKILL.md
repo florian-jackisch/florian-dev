@@ -68,7 +68,7 @@ If the commit includes Markdown files:
 - for existing Markdown files, prefer touched sections or otherwise narrowly scoped fixes when practical
 - do not create broad formatting churn in untouched parts of an existing file just to satisfy the tool
 
-If a file-wide formatter would rewrite large untouched areas, stop and decide deliberately whether that broader cleanup belongs in this commit.
+If a Markdown cleanup pass would rewrite large untouched areas, stop and decide deliberately whether that broader cleanup belongs in this commit.
 
 ### 3. Stage deliberately
 
