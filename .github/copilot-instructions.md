@@ -56,8 +56,8 @@ florian-dev/
 - Use `coding` for implementation work.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
 - Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
-- Use `implementation-review` at the end of an implementation phase, not as a substitute for MR review.
-- Use `code-review` for MR/PR review and draft-undraft decisions.
+- Use `implementation-review` at the end of an implementation phase, not as a substitute for MR review; keep it light by default and only add a second reviewer for large or high-risk work.
+- Use `code-review` for MR/PR review and draft-undraft decisions; default to two reviewers, with a one-reviewer fast path only for truly tiny changes.
 
 ## Vendoring External Skills
 

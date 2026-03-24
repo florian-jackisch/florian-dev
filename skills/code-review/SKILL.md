@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: 'This skill should be used when reviewing a merge request or pull request, when asked to perform a code review, or when checking whether your own draft MR/PR is in good enough shape to be undrafted. It drives a practical review workflow focused on correctness, risk, test coverage, reviewer comments, and a clear review verdict.'
+description: 'This skill should be used when reviewing a merge request or pull request, when asked to perform a code review, or when checking whether your own draft MR/PR is in good enough shape to be undrafted. It drives a practical review workflow focused on correctness, risk, test coverage, reviewer comments, clear review verdicts, and a default two-reviewer path for thorough MR review.'
 ---
 
 # Code Review
@@ -94,6 +94,51 @@ For reviewing your own draft MR/PR:
 - Keep draft
 - Ready to undraft
 - Ready to undraft after small fixes
+
+## Reviewer Depth
+
+Default to two reviewers for MR / PR review so the review is as thorough as practical before handoff to humans or merge pressure.
+
+### Tiny MR / PR fast path
+
+For a truly tiny, coherent change, one reviewer can still be enough.
+
+Treat this as an exception, not the norm.
+
+Good examples:
+
+- very small docs-only changes
+- tiny typo or wording fixes
+- a narrowly scoped no-risk cleanup with obvious behavior preservation
+
+If this is your own MR and the implementation family is known, prefer a reviewer from the other model family when practical.
+
+### Default path
+
+For normal MR / PR review, use two reviewers.
+
+This is especially important when:
+
+- broad or risky diff
+- non-trivial behavior changes
+- security, auth, payments, deletion, migrations, or concurrency concerns
+- large blast radius
+- draft-undraft decision on a big branch
+
+Suggested reviewer pair:
+
+- `GPT-5.4 review`
+- `Claude Sonnet 4.6 review`
+
+Escalate the Claude reviewer to `Claude Opus 4.6 review` when the change is especially hard or high-risk.
+
+Use the two-reviewer path unless the MR clearly fits the tiny fast path above.
+
+When you use the two-reviewer path, launch separate review agents with the `task` tool instead of relying on one long self-review:
+
+- `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+- `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
+- for especially hard or high-risk work, replace the Sonnet reviewer with `Claude Opus 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
 
 ## Draft-vs-Ready Heuristic
 

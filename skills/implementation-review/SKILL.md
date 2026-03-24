@@ -1,6 +1,6 @@
 ---
 name: implementation-review
-description: 'This skill should be used at the end of an implementation phase, after coding, verification, and any needed cleanup, to compare the implementation against the plan or agreed scope. It strengthens the built-in `/review` flow with plan awareness, refactoring-pressure checks, complexity-based multi-model review, fix-and-rereview loops, and a final implementation handoff report.'
+description: 'This skill should be used at the end of an implementation phase, after coding, verification, and any needed cleanup, to compare the implementation against the plan or agreed scope. It strengthens the built-in `/review` flow with plan awareness, refactoring-pressure checks, light default review for routine slices, deeper review only for large or high-risk work, and a final implementation handoff report.'
 ---
 
 # Implementation Review
@@ -19,7 +19,8 @@ Use built-in review as the baseline review mechanism, then strengthen it by addi
 
 - comparison against the implementation plan or agreed scope
 - explicit change-size calibration
-- an optional second reviewer when the work is medium or hard
+- a light default review path for routine implementation slices
+- a second reviewer only for large or high-risk implementation work
 - an explicit check for refactoring pressure before the phase is called complete
 - a fix-and-rereview loop
 - a final report of what changed, what reviewers found, and what remains open
@@ -39,6 +40,8 @@ If the goal is to review an MR/PR as a review artifact, or decide whether a draf
 
 - Review against the plan, idea, or agreed scope, not just the diff in isolation.
 - Use review depth proportional to change complexity.
+- For routine implementation slices, prefer one reviewer instead of two.
+- When possible, choose a reviewer from the model family that did **not** do the implementation.
 - Ask whether the design should be cleaned up further before the phase is called complete.
 - Fix material findings before calling the phase complete.
 - Re-review after meaningful fixes.
@@ -57,7 +60,10 @@ Examples:
 
 Use:
 
-- one reviewer: `GPT-5.4`
+- one reviewer only
+- if implementation was mainly done by a GPT-family model, prefer `Claude Sonnet 4.6 review`
+- if implementation was mainly done by a Claude-family model, prefer `GPT-5.4 review`
+- if the implementation family is unclear, choose one reviewer and still prefer the opposite family when you can
 
 ### Medium changes
 
@@ -70,8 +76,9 @@ Examples:
 
 Use:
 
-- reviewer 1: `GPT-5.4`
-- reviewer 2: `Claude Sonnet 4.6`
+- start with one primary reviewer
+- prefer the opposite family from the implementation when that is known
+- keep this as a one-reviewer path unless the slice is effectively large or high-risk in practice
 
 ### Hard changes
 
@@ -118,10 +125,15 @@ Use the bundled `reviewer-prompt.md` as the base prompt.
 Launch separate review agents with the `task` tool, not one long self-review in your own context.
 
 - Light:
-  - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - choose exactly one reviewer
+  - if implementation was mainly GPT-family work, use `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
+  - if implementation was mainly Claude-family work, use `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - if the implementation family is unclear, pick one reviewer and still prefer the opposite family when you can
 - Medium:
-  - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
-  - `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
+  - start with one primary reviewer from the opposite family when possible
+  - if implementation was mainly GPT-family work, start with `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
+  - if implementation was mainly Claude-family work, start with `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
+  - if the slice proves large or high-risk in practice, treat it as a hard review instead of quietly growing the medium path
 - Hard:
   - `GPT-5.4 review`: `agent_type: "general-purpose"`, `model: "gpt-5.4"`
   - `Claude Opus 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
@@ -181,7 +193,8 @@ Use `code-review` for those.
 - treating this as purely a pre-merge gate
 - reviewing without the plan or scope context
 - using two reviewers for tiny changes by default
-- skipping the second reviewer on medium or hard work
+- adding a second reviewer to routine implementation slices without a real size or risk reason
+- skipping the second reviewer on hard work
 - skipping rereview after meaningful fixes
 - calling the phase done while obvious duplication, awkward boundaries, or design pressure remains unaddressed
 - declaring the implementation phase done without verification evidence
