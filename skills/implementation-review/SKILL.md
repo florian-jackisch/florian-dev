@@ -1,6 +1,6 @@
 ---
 name: implementation-review
-description: 'This skill should be used at the end of an implementation phase, after coding and verification, to compare the implementation against the plan or agreed scope. It strengthens the built-in `/review` flow with plan awareness, complexity-based multi-model review, fix-and-rereview loops, and a final implementation handoff report.'
+description: 'This skill should be used at the end of an implementation phase, after coding, verification, and any needed cleanup, to compare the implementation against the plan or agreed scope. It strengthens the built-in `/review` flow with plan awareness, refactoring-pressure checks, complexity-based multi-model review, fix-and-rereview loops, and a final implementation handoff report.'
 ---
 
 # Implementation Review
@@ -20,6 +20,7 @@ Use built-in review as the baseline review mechanism, then strengthen it by addi
 - comparison against the implementation plan or agreed scope
 - explicit change-size calibration
 - an optional second reviewer when the work is medium or hard
+- an explicit check for refactoring pressure before the phase is called complete
 - a fix-and-rereview loop
 - a final report of what changed, what reviewers found, and what remains open
 
@@ -28,7 +29,7 @@ Use built-in review as the baseline review mechanism, then strengthen it by addi
 Use this skill:
 
 - when an implementation slice is complete enough to evaluate
-- after coding and verification have run
+- after coding, verification, and any deliberate refactoring checkpoint have run
 - before calling an implementation phase done
 - before handing work off for MR review or broader team review
 
@@ -38,6 +39,7 @@ If the goal is to review an MR/PR as a review artifact, or decide whether a draf
 
 - Review against the plan, idea, or agreed scope, not just the diff in isolation.
 - Use review depth proportional to change complexity.
+- Ask whether the design should be cleaned up further before the phase is called complete.
 - Fix material findings before calling the phase complete.
 - Re-review after meaningful fixes.
 - End with a concise implementation report.
@@ -93,6 +95,7 @@ Gather these before review:
 - the implementation plan, source idea, or agreed scope
 - the diff or commit range under review
 - the current verification results
+- what refactoring was done, skipped, or consciously deferred
 - known limitations, trade-offs, or deferred work
 
 ## Review Workflow
@@ -104,6 +107,9 @@ Before review:
 - ensure relevant tests, builds, linters, and checks have run
 - ensure the diff is in a coherent state
 - gather the plan or scope context
+- confirm whether a deliberate `refactoring` checkpoint was warranted and, if so, whether it happened
+
+If the checkpoint was warranted but skipped, do not just note it and continue. Route the work back through `refactoring`, verify again, and then resume review.
 
 ### 2. Run the reviewer set
 
@@ -135,6 +141,7 @@ Combine the findings into:
 - critical
 - important
 - minor
+- refactoring pressure that should be handled before the phase is considered done
 - reviewer disagreements
 
 Do not treat reviewer comments as automatically correct. Evaluate them against repo reality.
@@ -155,6 +162,7 @@ At the end, present:
 - what was implemented
 - what the reviewer or reviewers found
 - what was fixed
+- what refactoring was performed or explicitly deferred
 - what remains open
 - how you would proceed next
 
@@ -175,4 +183,5 @@ Use `code-review` for those.
 - using two reviewers for tiny changes by default
 - skipping the second reviewer on medium or hard work
 - skipping rereview after meaningful fixes
+- calling the phase done while obvious duplication, awkward boundaries, or design pressure remains unaddressed
 - declaring the implementation phase done without verification evidence

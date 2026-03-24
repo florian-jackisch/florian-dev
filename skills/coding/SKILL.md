@@ -1,6 +1,6 @@
 ---
 name: coding
-description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, red/green TDD, many small working commits, formatter/linter/test discipline, and disciplined end-of-implementation review handoff.'
+description: 'This skill should be used when implementing a reviewed plan or otherwise executing coding work. It enforces feature-branch hygiene, reuse-first implementation, red/green/refactor execution, many small working commits, formatter/linter/test discipline, and disciplined handoff through deliberate cleanup and end-of-implementation review.'
 ---
 
 # Coding
@@ -15,6 +15,7 @@ This is the execution counterpart to `planning`.
 - Follow the plan unless there is a concrete reason to adjust it.
 - Prefer reusing existing code over creating new abstractions.
 - Follow red/green/refactor.
+- Treat refactoring as continuous pressure, not just a final cleanup chore.
 - Keep commits small, working, and reviewable.
 - Verify before claiming progress.
 
@@ -62,6 +63,10 @@ For coding work, the default loop is:
 
 If the project has no automated tests for the area, create the smallest realistic verification path available and still prove the behavior before moving on.
 
+Small local refactors after a green test are normal. Do not force every working commit to include a broader refactor just for the sake of it.
+
+If structural pressure accumulates across the slice, use `refactoring` for a deliberate cleanup checkpoint before `implementation-review` rather than waiting until final review to notice the debt.
+
 ### 4. Commit rhythm
 
 Commit after meaningful green states, not at the very end.
@@ -94,6 +99,7 @@ If the repo lacks one of these tools, do not pretend the check happened. State t
 At the end of an implementation phase:
 
 - compare the implementation against the plan
+- run `refactoring` first if the slice accumulated meaningful design pressure, duplication, or awkward boundaries that deserve a focused cleanup pass
 - run `implementation-review`
 - fix material findings
 - rerun verification

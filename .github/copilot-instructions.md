@@ -49,6 +49,15 @@ florian-dev/
 5. Update `README.md` and `ROADMAP.md` when relevant.
 6. Bump `plugin.json` version before pushing.
 
+## Workflow Fit
+
+- Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
+- Use `coding` for implementation work.
+- For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
+- Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
+- Use `implementation-review` at the end of an implementation phase, not as a substitute for MR review.
+- Use `code-review` for MR/PR review and draft-undraft decisions.
+
 ## Vendoring External Skills
 
 When bringing in a skill from `skills.sh`, vendor it into this repository instead of leaving it in agent-managed locations.

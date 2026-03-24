@@ -1,6 +1,6 @@
 ---
 name: planning
-description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green TDD steps, frequent working commits, and a plan review loop before implementation begins.'
+description: 'This skill should be used when the user asks to "plan this", "write an implementation plan", "turn this idea into a plan", or wants to make built-in `/plan` or plan mode more specific and execution-ready. It turns a clear idea into a concrete execution plan with exact files, feature-branch expectations, red/green/refactor steps, deliberate cleanup checkpoints when needed, frequent working commits, and a plan review loop before implementation begins.'
 ---
 
 # Planning
@@ -26,6 +26,7 @@ Specifically, this skill should make the built-in plan:
 - more concrete about files and task boundaries
 - more explicit about feature branches or worktrees
 - more rigorous about red/green TDD
+- more deliberate about where refactoring should happen
 - more explicit about verification steps
 - more deliberate about frequent working commits
 - more likely to survive a review before coding starts
@@ -35,6 +36,7 @@ Specifically, this skill should make the built-in plan:
 - Do not implement while planning.
 - Plan on a feature branch or dedicated worktree, not on `main` or the default branch.
 - Prefer red/green/refactor task breakdowns.
+- Plan explicit refactoring checkpoints when design pressure is likely to accumulate.
 - Keep tasks small enough to produce frequent working commits.
 - Review the plan before implementation starts.
 
@@ -55,6 +57,7 @@ Every implementation plan should include:
 - explicit assumptions and constraints
 - a task sequence that an implementer can follow without guessing
 - the verification approach for each task
+- where refactoring should happen if the work is likely to create structural pressure
 - the commit rhythm
 
 ## Task Structure
@@ -71,6 +74,8 @@ For coding tasks, prefer this shape:
 6. commit a working state
 
 Do not bundle many red/green cycles into one giant task.
+
+For medium or hard work, the plan should also say whether there should be a deliberate `refactoring` checkpoint before `implementation-review`.
 
 ## Plan Quality Bar
 
@@ -91,6 +96,7 @@ The plan should explicitly call for:
 - a feature branch or worktree
 - many small working commits
 - commit points after meaningful green states
+- a separate refactoring checkpoint when the work is likely to build design pressure faster than it can be cleaned up locally
 - review checkpoints before handoff and before merge back to `main`
 
 ## Review the Plan Before Execution
@@ -122,6 +128,7 @@ If the review finds real gaps, fix the plan and review it again.
 Once the plan is approved, execution should normally use:
 
 - `coding` for implementation work
+- `refactoring` for deliberate cleanup before the end of an implementation phase
 - `writing` for documentation-heavy tasks
 - `implementation-review` at the end of an implementation phase before handoff or the next workflow step
 - `code-review` when the next step is MR/PR review, draft-undraft decision, or merge readiness
