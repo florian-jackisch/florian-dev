@@ -32,6 +32,7 @@ florian-dev/
 - Keep skill `name` equal to the folder name.
 - Write skill descriptions in third person with concrete trigger phrases.
 - Prefer repo-local skills. Do **not** install skills globally.
+- Use `copilot-instructions-improver` when auditing or rewriting this repo's Copilot instruction files.
 
 ## Adding or Adapting a Skill
 
@@ -44,8 +45,9 @@ florian-dev/
    - `references/`
    - `examples/`
    - `assets/`
-4. Update `README.md`.
-5. Bump `plugin.json` version before pushing.
+4. If the skill comes from `skills.sh`, vendor it into `skills/` instead of keeping any `.agents/` install output.
+5. Update `README.md` and `ROADMAP.md` when relevant.
+6. Bump `plugin.json` version before pushing.
 
 ## Vendoring External Skills
 
@@ -73,7 +75,7 @@ Important:
 
 ## Versioning
 
-- Patch (`0.2.x`): documentation updates, description tweaks, non-breaking skill refinements
+- Patch: documentation updates, description tweaks, non-breaking skill refinements
 - Minor (`0.x.0`): new skill added
 - Major (`x.0.0`): breaking changes to existing skills
 
@@ -91,5 +93,5 @@ After changes:
    ```text
    /plugin install florian-jackisch/florian-dev
    ```
-2. Check `/skills`.
+2. Check `/skills` to confirm the expected skill list.
 3. If the current session does not pick up a new skill immediately, run `/restart`.
