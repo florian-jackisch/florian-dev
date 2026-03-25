@@ -1,6 +1,6 @@
 ---
 name: git
-description: 'This skill should be used when preparing commits, staging changes, splitting work into clean git commits, or handling routine git hygiene. It favors small logical commits, human commit messages under 72 characters, no conventional-commit prefixes, and never adds `Co-authored-by` trailers.'
+description: 'This skill should be used when preparing commits, staging changes, splitting work into clean git commits, or handling routine git hygiene. It favors small logical commits, human commit messages under 72 characters, no conventional-commit prefixes, no `Co-authored-by` trailers, and explicit user-controlled merge request and issue actions.'
 ---
 
 # Git
@@ -42,6 +42,7 @@ Avoid:
 - One logical change per commit.
 - Stage intentionally, not blindly.
 - Review the diff before committing.
+- Never create or modify an issue or MR unless the user explicitly asked for that action.
 - Do not amend or rewrite history unless the user asks.
 - Do not skip hooks unless the user asks.
 - Do not force push unless the user asks.
@@ -67,7 +68,7 @@ Prefer:
 
 Do not stage generated noise, secrets, or unrelated cleanup by accident.
 
-### 4. Write the message from the actual diff
+### 3. Write the message from the actual diff
 
 The summary should describe what changed, not what ticket category it belongs to.
 
@@ -78,6 +79,19 @@ Use:
 - repository language consistent with nearby history
 
 If a body is needed, use it only for context that would otherwise be unclear from the diff.
+
+## Issues and Merge Requests
+
+Treat issue and MR actions as user-controlled workflow, not automatic follow-through from coding or git hygiene.
+
+- Never create a new issue unless the user explicitly asks.
+- Never create, edit, or comment on an issue or MR unless the user explicitly asks for that action.
+- When creating a new MR, always create it as a draft.
+- Never undraft an MR on your own.
+- Never assign reviewers on your own.
+- Keep MR descriptions short, human, and focused on what changed and why.
+- When asked to update an MR title, description, or comment, draft the proposed content in a Markdown file first and ask the user to review it before applying the change.
+- Prefer putting that draft Markdown file in the session workspace or another non-committed location unless the user explicitly wants it in the repository.
 
 ## When a Body Helps
 
@@ -104,6 +118,8 @@ Do not automatically route git workflow into `final-review`. Use that heavier MR
 
 - Never commit secrets.
 - Never add `Co-authored-by` trailers.
+- Never create a new issue without explicit user approval.
+- Never undraft or assign reviewers on an MR without explicit user approval.
 - Never change git config as part of routine commit work.
 - Never use destructive history edits without explicit user approval.
 
@@ -114,3 +130,6 @@ Do not automatically route git workflow into `final-review`. Use that heavier MR
 - using conventional-commit prefixes by habit
 - adding a body that says nothing useful
 - staging everything because it is easier
+- creating an issue or MR update just because the work seems ready
+- opening a non-draft MR by default
+- updating MR text directly without first preparing a Markdown draft for user review

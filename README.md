@@ -16,7 +16,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
 | `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 | `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
-| `git` | Git hygiene and commit workflow with human commit messages, no conventional prefixes, and no `Co-authored-by` trailers |
+| `git` | Git hygiene, commit workflow, and MR authoring policy with human commit messages, draft-first MRs, user-reviewed MR text updates, no conventional prefixes, and no `Co-authored-by` trailers |
 | `python` | Python-specific companion workflow with type hints, scoped type checking, `uv`, `ruff`, `pytest`, refactor-first testing, and modern library preferences such as `dataclasses`, `rich`, `typer`, and `pydantic` |
 | `rust` | Rust-specific companion workflow with type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, low-mock testing, and clearer structs over unclear tuples |
 | `cpp` | C++-specific companion workflow with modern C++, CMake plus Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, refactor-first low-mock testing, and balanced use of templates and header-only libraries |

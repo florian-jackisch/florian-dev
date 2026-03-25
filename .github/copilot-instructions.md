@@ -59,7 +59,7 @@ florian-dev/
 - Use `refactoring` when cleanup needs deliberate focus beyond a small local red/green/refactor step.
 - Use `checkpoint` during planning or implementation when work should pause for a light opposite-family sanity check before continuing; keep it to one reviewer by default.
 - Use `final-review` only on explicit request for MR/PR review or draft-undraft decisions; do not route into it automatically from other workflows. When used, default to two reviewers, with a one-reviewer fast path only for truly tiny changes and optional built-in `/fleet` escalation for especially large or high-risk reviews.
-- Use `git` for commit preparation and commit messages; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, and only use a short body when it adds real context.
+- Use `git` for commit preparation, commit messages, and MR authoring policy; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, create new MRs as draft, never undraft or assign reviewers automatically, and draft MR title/description/comment updates in Markdown for user review before applying them.
 - Use `mermaid` alongside `writing` or `planning` when Markdown docs, specs, or plans would be clearer with Mermaid diagrams. Prefer embedded Mermaid blocks and simple maintainable diagrams before introducing a polished rendering pipeline.
 - For Markdown files, prefer drafting first without forcing cleanup too early. Before committing Markdown work, keep cleanup deliberate and diff-preserving: prefer new files first, and keep cleanup scoped to touched sections of existing files when practical so the diff stays small. Avoid broad churn in untouched parts of existing files unless that wider cleanup is a deliberate part of the change.
 - Use `python` alongside `coding` or `refactoring` for Python-specific work; prefer type hints, `uv`, `ruff`, `pytest`, refactor-first test design, and named data structures over unclear tuples. If a repo has no type checker configured, still run a scoped checker on changed Python code, but keep fixes mostly to the touched area unless an obvious coupled bug appears.
@@ -108,6 +108,16 @@ Important:
 - Single summary line, max 72 characters
 - No conventional-commit prefixes
 - No `Co-authored-by` trailers
+
+## Issues and Merge Requests
+
+- Never create a new issue unless the user explicitly asks.
+- Never create, edit, or comment on an issue or MR unless the user explicitly asks for that action.
+- New MRs should always start as draft.
+- Never undraft an MR automatically.
+- Never assign reviewers automatically.
+- When preparing a title, description, or comment update for an MR, draft the proposed content in a Markdown file first and let the user review it before applying the change.
+- Keep issue and MR descriptions short and human rather than changelog-like.
 
 ## Local Verification
 
