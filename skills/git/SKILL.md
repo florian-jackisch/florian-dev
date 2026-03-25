@@ -58,19 +58,7 @@ Before committing:
 
 If the tree contains unrelated work, do not bundle it into the same commit.
 
-### 2. Prepare touched Markdown before staging
-
-If the commit includes Markdown files:
-
-- do not force linting during rough drafting
-- before staging, run `prettier` and `markdownlint` only in a diff-preserving way
-- prefer this for new Markdown files
-- for existing Markdown files, prefer touched sections or otherwise narrowly scoped fixes when practical
-- do not create broad formatting churn in untouched parts of an existing file just to satisfy the tool
-
-If a Markdown cleanup pass would rewrite large untouched areas, stop and decide deliberately whether that broader cleanup belongs in this commit.
-
-### 3. Stage deliberately
+### 2. Stage deliberately
 
 Prefer:
 
@@ -126,5 +114,3 @@ Do not automatically route git workflow into `final-review`. Use that heavier MR
 - using conventional-commit prefixes by habit
 - adding a body that says nothing useful
 - staging everything because it is easier
-- skipping an appropriate final `prettier` and `markdownlint` pass for new or touched Markdown content before commit
-- letting Markdown tools rewrite large untouched areas of an existing file without deciding that churn is worth the diff

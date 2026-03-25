@@ -73,13 +73,6 @@ Where applicable:
 - check code samples for realism
 - ensure the document matches the current system behavior
 
-For Markdown-heavy work:
-
-- do not force linting during early drafting just to get words on the page
-- before handoff to the git commit step, flag touched Markdown files for a final `prettier` and `markdownlint` pass
-- prefer keeping Markdown cleanup scoped to new files or touched sections when practical so the diff stays small
-
-Treat formatting and linting as finish-quality checks, not as a reason to block rough drafts too early.
 
 ### 5. Review for readability
 
@@ -106,5 +99,4 @@ Check:
 - mixing tutorial, reference, and explanation without intention
 - unverified commands or examples
 - documentation that describes behavior the code does not have
-- handing off touched Markdown files without flagging the need for a final `prettier` and `markdownlint` pass
 - forcing documentation work through a TDD coding workflow when that is not the task
