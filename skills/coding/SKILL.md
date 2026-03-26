@@ -123,6 +123,10 @@ At the end of an implementation phase:
 
 Do not automatically route implementation work into `final-review`. That heavier MR review should only happen on explicit request, such as when asked to review the MR or decide whether a draft is ready to undraft.
 
+Exception:
+
+- if the user explicitly invoked `auto-draft`, that orchestration skill may run `final-review` internally as part of its bounded draft-delivery loop
+
 ## When to Pause and Push Back
 
 Stop and question the plan or task if:

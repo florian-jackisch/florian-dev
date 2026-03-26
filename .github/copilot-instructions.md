@@ -52,6 +52,7 @@ florian-dev/
 ## Workflow Fit
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
+- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow that internally brainstorms, plans, implements on a fresh branch, opens a new draft MR, runs final review in a capped loop, and leaves the MR as draft for manual review.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
 - Use `coding` for implementation work.
 - Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
@@ -118,6 +119,13 @@ Important:
 - Never assign reviewers automatically.
 - When preparing a title, description, or comment update for an MR, draft the proposed content in a Markdown file first and let the user review it before applying the change.
 - Keep issue and MR descriptions short and human rather than changelog-like.
+
+`auto-draft` is the narrow exception to the MR-text pre-review rule:
+
+- if the user explicitly invokes `auto-draft`, it may create or update draft MR text directly
+- it must still keep the MR as draft
+- it must never assign reviewers automatically
+- it must never create an issue as part of that flow
 
 ## Local Verification
 

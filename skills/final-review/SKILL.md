@@ -12,6 +12,13 @@ This includes:
 - reviewing someone else's merge request or pull request
 - deciding whether your own draft MR is ready to be undrafted and before requesting review
 
+This skill is normally triggered only on explicit request.
+
+Exception:
+
+- `auto-draft` may invoke `final-review` internally as part of its explicit autonomous draft-delivery workflow
+- that exception does not make `final-review` generally auto-routable from other skills
+
 ## Relationship to Copilot CLI `/review`
 
 GitHub Copilot CLI already provides built-in `/review`.

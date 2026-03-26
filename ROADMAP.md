@@ -56,3 +56,9 @@ These came bundled with the superpowers plugin and may be worth adapting.
 | Agent | Description |
 |-------|-------------|
 | `code-reviewer` | Senior code reviewer for completed project steps |
+
+## Repo-Native Workflow Additions
+
+| Skill | Description | Status |
+|-------|-------------|--------|
+| `auto-draft` | One-command autonomous draft workflow: internal brainstorm and plan, fresh-branch implementation, draft MR creation, capped final-review fix loop, and manual user review at the end. | 🚧 Planned / in progress |

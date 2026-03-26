@@ -17,6 +17,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 | `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
 | `git` | Git hygiene, commit workflow, and MR authoring policy with human commit messages, draft-first MRs, user-reviewed MR text updates, no conventional prefixes, and no `Co-authored-by` trailers |
+| `auto-draft` | Autonomous draft-delivery workflow that internally brainstorms and plans, implements on a fresh branch, opens a new draft MR, runs a capped final-review fix loop, and leaves the result as a manual-review draft |
 | `python` | Python-specific companion workflow with type hints, scoped type checking, `uv`, `ruff`, `pytest`, refactor-first testing, and modern library preferences such as `dataclasses`, `rich`, `typer`, and `pydantic` |
 | `rust` | Rust-specific companion workflow with type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, low-mock testing, and clearer structs over unclear tuples |
 | `cpp` | C++-specific companion workflow with modern C++, CMake plus Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, refactor-first low-mock testing, and balanced use of templates and header-only libraries |
@@ -48,6 +49,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 ## Integration Notes
 
 - `context7` should be part of normal planning and implementation workflow for current library and framework API lookups rather than treated as an optional separate skill.
+- `auto-draft` is an explicit fast-path exception, not the default workflow. It may create or update draft MR text directly because the user opted into that autonomous flow, but it still must keep the MR as draft and unassigned.
 - GitHub integration should generally use Copilot CLI's built-in GitHub MCP rather than a plugin-local replacement.
 - The bundled GitLab MCP uses `glab mcp serve`, so `glab` must be installed and authenticated.
 

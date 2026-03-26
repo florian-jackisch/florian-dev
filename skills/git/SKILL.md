@@ -93,6 +93,11 @@ Treat issue and MR actions as user-controlled workflow, not automatic follow-thr
 - When asked to update an MR title, description, or comment, draft the proposed content in a Markdown file first and ask the user to review it before applying the change.
 - Prefer putting that draft Markdown file in the session workspace or another non-committed location unless the user explicitly wants it in the repository.
 
+Exception:
+
+- when the user explicitly invokes `auto-draft`, that skill may create or update draft MR text directly as part of its autonomous draft-delivery flow
+- even then, the MR must stay draft and unassigned
+
 ## When a Body Helps
 
 Add a short one-paragraph body only when:
