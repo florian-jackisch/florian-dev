@@ -180,6 +180,8 @@ If blockers remain later, update the same draft MR with those blockers clearly d
 
 Run `final-review` as the internal review stage for this autonomous workflow.
 
+When invoking `final-review`, its agent budget still applies — do not override or ignore it. The total agents across the entire auto-draft run (implementation + review loops combined) should stay reasonable.
+
 Default loop:
 
 1. run `final-review`

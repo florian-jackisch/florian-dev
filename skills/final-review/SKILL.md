@@ -25,6 +25,36 @@ GitHub Copilot CLI already provides built-in `/review`.
 
 Use that as the default review engine when it fits, then strengthen the review with MR/PR context, CI awareness, and an explicit verdict.
 
+## Agent Budget
+
+Hard cap: **no more than 6 total agents** (task or explore) across the entire review.
+
+This includes context-gathering agents, review agents, and any agents they spawn.
+
+Typical breakdown:
+
+- tiny fast path: 0–1 agents (review inline, maybe 1 explore for context)
+- default two-reviewer path: 2–4 agents (1–2 explore for context, 2 review agents)
+- `/fleet` escalation: 4–6 agents total, never more
+
+If the MR is so large that 6 agents feel insufficient, the correct response is to split the review into explicit passes (e.g., "review security first, then correctness"), not to spawn more agents.
+
+### Context belongs to the main agent
+
+Gather all MR context (diff, description, CI status, file contents) yourself before launching any review agents. Read diffs and files directly with tools — do not spawn an explore agent per file.
+
+Pass the gathered context into each review agent's prompt so reviewers can work from the provided material without re-exploring the repository.
+
+### Review agents must not spawn sub-agents
+
+When you launch review agents via the `task` tool, instruct them explicitly:
+
+- do not launch sub-agents (no `task` calls, no explore agents)
+- review the material provided in the prompt
+- if something is unclear, note it as a gap rather than exploring independently
+
+This is the single biggest source of agent explosion: a `general-purpose` review agent re-exploring the entire MR with its own sub-agents.
+
 ## Review Goals
 
 A good code review should answer:
@@ -147,11 +177,13 @@ When you use the two-reviewer path, launch separate review agents with the `task
 - `Claude Sonnet 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-sonnet-4.6"`
 - for especially hard or high-risk work, replace the Sonnet reviewer with `Claude Opus 4.6 review`: `agent_type: "general-purpose"`, `model: "claude-opus-4.6"`
 
+Include the full diff and all relevant context in each reviewer's prompt. Explicitly instruct each reviewer not to launch any sub-agents — they review the material provided, nothing more.
+
 ### Large / high-risk review with built-in `/fleet`
 
 For especially large or high-risk MRs, built-in `/fleet` can help orchestrate parallel review work.
 
-Treat this as an escalation, not the default.
+Treat this as an escalation, not the default. The total agent count must still stay within the agent budget above.
 
 Good `/fleet` review candidates usually have:
 
@@ -159,10 +191,12 @@ Good `/fleet` review candidates usually have:
 - distinct review concerns such as security, correctness, and test coverage
 - enough scope that one reviewer pair would become slow or noisy
 
-If you use built-in `/fleet` for review, define:
+If you use built-in `/fleet` for review:
 
-- which reviewer checks which files or concern areas
-- what shared MR context each reviewer needs
+- keep the total number of fleet tasks plus any other agents within the 6-agent budget
+- define which reviewer checks which files or concern areas
+- pass all needed MR context into each fleet task so they do not re-explore
+- instruct fleet tasks not to launch their own sub-agents
 - how duplicate comments will be deduplicated
 - who synthesizes the final blocking versus advisory verdict
 
