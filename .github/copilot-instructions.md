@@ -52,7 +52,8 @@ florian-dev/
 ## Workflow Fit
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
-- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow that internally brainstorms, plans, implements on a fresh branch, opens a new draft MR, runs final review in a capped loop, and leaves the MR as draft for manual review.
+- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical.
+- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow that internally brainstorms, plans, implements in a fresh worktree on a fresh branch, opens a new draft MR, runs final review in a capped loop, and leaves the MR as draft for manual review.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
 - Use `coding` for implementation work.
 - Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
@@ -67,6 +68,7 @@ florian-dev/
 - Use `rust` alongside `coding` or `refactoring` for Rust-specific work; prefer type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, clearer structs over unclear tuples, and refactor-first testing over mock-heavy design. If a repo has no wrapped Rust verification flow, still run the relevant `cargo fmt --check`, `cargo clippy`, and `cargo test` commands for the touched crate or workspace area.
 - Use `cpp` alongside `coding` or `refactoring` for C++-specific work; prefer modern C++ within the target standard, CMake with Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, balanced use of templates and header-only libraries, refactor-first low-mock testing, and named types over unclear tuples. If a repo has no wrapped C++ verification flow, still run the relevant configure, build, test, formatting, linting, and sanitizer checks for the touched target or project area when practical.
 - Use `bash` alongside `coding` or `refactoring` for Bash-specific work; prefer `#!/usr/bin/env bash` plus immediate `set -euo pipefail`, `shellcheck`, `shfmt`, executable scripts, careful quoting, arrays over unsafe word splitting, and explicit shell error handling. If a repo has no wrapped shell verification flow, still run the relevant lint, format, permission, and execution checks for the touched script area when practical.
+- Keep repo-local linked worktrees under `.worktrees/` and ensure that directory stays git-ignored.
 
 ## Vendoring External Skills
 

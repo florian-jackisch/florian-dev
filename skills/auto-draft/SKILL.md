@@ -1,6 +1,6 @@
 ---
 name: auto-draft
-description: 'This skill should be used when the user wants a fast autonomous draft-delivery workflow from prompt to draft merge request. It runs lightweight internal brainstorming and planning, implements on a fresh branch, opens a new draft MR, runs final review in a capped fix loop, and leaves the result as a user-reviewable draft.'
+description: 'This skill should be used when the user wants a fast autonomous draft-delivery workflow from prompt to draft merge request. It runs lightweight internal brainstorming and planning, implements in a fresh worktree on a fresh branch, opens a new draft MR, runs final review in a capped fix loop, and leaves the result as a user-reviewable draft.'
 ---
 
 # Auto-Draft
@@ -27,7 +27,7 @@ without forcing the user through those steps interactively.
 1. understand the request and make reasonable assumptions
 2. do lightweight internal brainstorming without asking routine questions
 3. create an internal execution-ready plan
-4. create a fresh branch
+4. create and enter a fresh worktree on a fresh branch
 5. implement the work
 6. open a new draft MR
 7. run `final-review`
@@ -79,7 +79,7 @@ Even in autonomous mode:
 - do **not** stop for routine clarification
 - do **not** keep looping forever on review findings
 - do **not** reuse `main` for implementation
-- do **not** quietly continue if the working tree is dirty or unsafe to reuse
+- do **not** quietly code in the repository root when a fresh worktree should be used
 
 ## When to Stop and Ask Anyway
 
@@ -90,26 +90,23 @@ Examples:
 - destructive data or history operations
 - security-sensitive changes with unclear intent
 - broad production-impacting changes where the prompt is too ambiguous to infer safely
-- a dirty working tree or unrelated local changes that would contaminate the autonomous branch
 
 Normal ambiguity is not enough to stop. Make reasonable assumptions and keep going.
 
-## Branch Discipline
+## Worktree Discipline
 
 Before implementation:
 
-1. check for a dirty working tree
-2. check for unrelated local changes
-3. if the tree is unsafe to reuse, stop
-4. otherwise create a fresh branch for this run
+1. inspect the repository root
+2. warn if the main checkout is dirty
+3. invoke `start-worktree` as the worktree-creation phase so this run gets a fresh worktree on a fresh branch from the default branch
+4. switch the session into that worktree
 
-Always create a fresh branch for `auto-draft`.
+Always create a fresh worktree and a fresh branch for `auto-draft`.
 
 Do not reuse the current branch just because one already exists.
 
-Leave the branch and worktree as-is at the end.
-
-Do not switch back to `main` automatically.
+Leave the worktree and branch as-is at the end.
 
 ## Internal Workflow
 
@@ -147,7 +144,7 @@ Create an internal plan that is concrete enough to execute:
 
 Use the discipline of `planning`, but do not stop to present the plan unless a real blocker appears.
 
-### 4. Implement on the fresh branch
+### 4. Implement in the fresh worktree
 
 Execute with the constraints from `coding`:
 
@@ -158,6 +155,8 @@ Execute with the constraints from `coding`:
 - run relevant checks during the work, not only at the end
 
 If the repository lacks tests or other verification, state that clearly in the draft MR.
+
+All implementation work should happen from inside the linked worktree after the session has switched into it.
 
 ### 5. Create a new draft MR
 

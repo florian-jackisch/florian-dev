@@ -9,6 +9,8 @@ Use this skill for implementation work on code changes.
 
 This is the execution counterpart to `planning`.
 
+For this workflow, non-trivial coding should normally happen inside a dedicated linked worktree rather than in the repository root.
+
 ## Core Principles
 
 - Do not implement substantial work on `main` or the default branch.
@@ -25,9 +27,9 @@ This is the execution counterpart to `planning`.
 Before coding:
 
 1. Check for a dirty working tree.
-2. Confirm the current branch.
-3. If on `main` or the default branch for anything beyond a tiny trivial change, stop and create or switch to a feature branch.
-4. If a worktree fits the task, prefer using one.
+2. If the work is non-trivial and you are not already inside a dedicated worktree, use `start-worktree` before proceeding.
+3. Confirm the current branch.
+4. If on `main` or the default branch for anything beyond a tiny trivial change, stop and move the work into a dedicated worktree or feature branch before continuing.
 
 ## Execution Workflow
 

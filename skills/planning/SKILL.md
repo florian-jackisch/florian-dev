@@ -37,6 +37,7 @@ Specifically, this skill should make the built-in plan:
 
 - Do not implement while planning.
 - Plan on a feature branch or dedicated worktree, not on `main` or the default branch.
+- For non-trivial implementation work, prefer handing off into `start-worktree` after plan approval so execution happens in an isolated linked worktree rather than the repository root.
 - Prefer red/green/refactor task breakdowns.
 - Plan explicit refactoring checkpoints when design pressure is likely to accumulate.
 - Plan when Context7 should be used to confirm current external APIs, framework behavior, and library usage instead of relying on memory.
@@ -50,6 +51,8 @@ Specifically, this skill should make the built-in plan:
 2. If important details are still unclear, use `interview` or `brainstorming` first.
 3. Check whether the work should happen on a feature branch or in a worktree.
 4. If already on `main` or the default branch for meaningful implementation work, stop and create or request a feature branch before continuing.
+
+For this workflow, treat a dedicated worktree as the default handoff for non-trivial coding unless there is a strong reason to keep the work in the current checkout.
 
 ## What the Plan Must Contain
 
@@ -117,6 +120,7 @@ Assume implementation will happen away from `main`.
 The plan should explicitly call for:
 
 - a feature branch or worktree
+- for non-trivial coding, `start-worktree` as the normal execution handoff after plan approval
 - many small working commits
 - commit points after meaningful green states
 - a separate refactoring checkpoint when the work is likely to build design pressure faster than it can be cleaned up locally
@@ -152,6 +156,7 @@ If the review finds real gaps, fix the plan and review it again.
 
 Once the plan is approved, execution should normally use:
 
+- `start-worktree` before non-trivial implementation so the session moves into an isolated worktree rooted at `.worktrees/`
 - `coding` for implementation work
 - `refactoring` for deliberate cleanup before the end of an implementation phase
 - `mermaid` when the plan or architecture outline would be clearer with diagrams in Markdown

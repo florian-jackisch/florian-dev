@@ -45,7 +45,7 @@ These came bundled with the superpowers plugin and may be worth adapting.
 | `subagent-driven-development` | Execute plans with independent tasks in current session |
 | `systematic-debugging` | Debug bugs/failures before proposing fixes |
 | `test-driven-development` | Write tests before implementation |
-| `using-git-worktrees` | Create isolated git worktrees for feature work |
+| `using-git-worktrees` | Create isolated git worktrees for feature work; likely base for a repo-native `start-worktree` adaptation |
 | `using-superpowers` | Establish skill discovery and usage patterns |
 | `verification-before-completion` | Run verification before claiming work is done |
 | `writing-plans` | Create multi-step implementation plans from specs |
@@ -61,4 +61,5 @@ These came bundled with the superpowers plugin and may be worth adapting.
 
 | Skill | Description | Status |
 |-------|-------------|--------|
-| `auto-draft` | One-command autonomous draft workflow: internal brainstorm and plan, fresh-branch implementation, draft MR creation, capped final-review fix loop, and manual user review at the end. | 🚧 Planned / in progress |
+| `auto-draft` | One-command autonomous draft workflow: internal brainstorm and plan, worktree-first implementation, draft MR creation, capped final-review fix loop, and manual user review at the end. | ✅ Added |
+| `start-worktree` | Worktree-first execution handoff: create repo-local `.worktrees/` checkout on a fresh branch, switch the session into it, and keep the repository root on the default branch when practical. | ✅ Added and adapted |

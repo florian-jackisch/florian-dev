@@ -13,5 +13,8 @@ npm-debug.log*
 .vscode/
 .idea/
 
+# Local worktrees
+.worktrees/
+
 # OS
 Thumbs.db

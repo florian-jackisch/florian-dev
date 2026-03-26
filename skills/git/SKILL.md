@@ -117,6 +117,12 @@ Before pushing, check:
 - relevant tests or checks have run
 - the branch is appropriate for the work
 
+If the work happened in a linked worktree:
+
+- keep the repository root on the default branch when practical
+- treat the worktree branch as the source for the eventual draft MR
+- suggest cleanup of the worktree later when the branch is finished, but do not force cleanup automatically
+
 Do not automatically route git workflow into `final-review`. Use that heavier MR review only when the user explicitly asks for an MR / PR review or draft-undraft decision.
 
 ## Safety Rules
