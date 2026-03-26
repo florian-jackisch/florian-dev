@@ -19,6 +19,7 @@ This skill creates an isolated execution workspace so the main checkout can stay
 - warn if the main checkout is dirty, but still create the worktree from the default branch
 - do not run setup or baseline verification by default at worktree creation time
 - after creating the worktree, continue the session from the new worktree root
+- if the current session name looks generic or default, rename the session to include the new branch name
 
 ## Why This Skill Exists
 
@@ -150,7 +151,22 @@ Use the environment's supported working-directory mechanism, such as a persisten
 
 The session should continue from the worktree root so all subsequent file reads, edits, tests, and commits land there.
 
-### 5. Hand off clearly
+### 5. Update the session name when appropriate
+
+After the worktree is ready, check whether the current session name still looks generic or default.
+
+If it does, rename the session so it includes the new branch name.
+
+Good examples:
+
+- `florian-dev: add-session-rename-handoff`
+- `repo-name: feature-user-search`
+
+If the session name already looks intentionally custom, keep it.
+
+Do not overwrite a clearly user-chosen session name just to mirror the branch.
+
+### 6. Hand off clearly
 
 At the end, report:
 
@@ -159,6 +175,7 @@ At the end, report:
 - the base branch used
 - whether the main checkout was dirty
 - that subsequent work will run from the worktree root
+- whether the session name was updated to include the branch name or deliberately left alone
 
 ## Relationship to Other Skills
 

@@ -101,6 +101,7 @@ Before implementation:
 2. warn if the main checkout is dirty
 3. invoke `start-worktree` as the worktree-creation phase so this run gets a fresh worktree on a fresh branch from the default branch
 4. switch the session into that worktree
+5. if the current session name still looks generic or default, rename it to include the fresh branch name
 
 Always create a fresh worktree and a fresh branch for `auto-draft`.
 
@@ -156,7 +157,7 @@ Execute with the constraints from `coding`:
 
 If the repository lacks tests or other verification, state that clearly in the draft MR.
 
-All implementation work should happen from inside the linked worktree after the session has switched into it.
+All implementation work should happen from inside the linked worktree after the session has switched into it. If the session name was still generic, update it to reflect the fresh branch before continuing.
 
 ### 5. Create a new draft MR
 

@@ -53,7 +53,7 @@ florian-dev/
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear. Planning should review the draft plan internally, apply material review findings, and present the revised plan as the single approval point before implementation.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
-- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical.
+- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical. When the session name still looks generic, include the new branch name in the session rename handoff too.
 - Use `coding` for implementation work.
 - Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
@@ -61,7 +61,7 @@ florian-dev/
 - Use `checkpoint` during planning or implementation when work should pause for a light opposite-family sanity check before continuing; keep it to one reviewer by default.
 - Use `final-review` only on explicit request for MR/PR review or draft-undraft decisions; do not route into it automatically from other workflows. When used, default to two reviewers, with a one-reviewer fast path only for truly tiny changes and optional built-in `/fleet` escalation for especially large or high-risk reviews.
 - Use `git` for commit preparation, commit messages, and MR authoring policy; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, create new MRs as draft, never undraft or assign reviewers automatically, and draft MR title/description/comment updates in Markdown for user review before applying them.
-- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow from prompt to draft merge request.
+- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow from prompt to draft merge request. Its worktree phase should inherit the same branch-aware session rename behavior.
 - Use `mermaid` alongside `writing` or `planning` when Markdown docs, specs, or plans would benefit from diagrams.
 - For Markdown files, prefer drafting first without forcing cleanup too early. Before committing Markdown work, keep cleanup deliberate and diff-preserving: prefer new files first, and keep cleanup scoped to touched sections of existing files when practical so the diff stays small. Avoid broad churn in untouched parts of existing files unless that wider cleanup is a deliberate part of the change.
 - Use `python` alongside `coding` or `refactoring` for Python-specific work.
