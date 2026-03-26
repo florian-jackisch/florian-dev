@@ -1,6 +1,6 @@
 ---
 name: start-worktree
-description: 'This skill should be used after planning approval and before non-trivial coding when work should move into an isolated git worktree on a fresh feature branch. It creates a repo-local `.worktrees/` checkout, infers branch naming from repo history when possible, keeps the main checkout on the default branch when practical, and moves subsequent work into the new worktree root.'
+description: 'This skill should be used after planning approval and before non-trivial coding when work should move into an isolated git worktree on a fresh feature branch. It creates a sibling directory next to the main repository (e.g. `foo-feature-a-thing` alongside `foo`), infers branch naming from repo history when possible, keeps the main checkout on the default branch when practical, and moves subsequent work into the new worktree root.'
 ---
 
 # Start Worktree
@@ -11,7 +11,7 @@ This skill creates an isolated execution workspace so the main checkout can stay
 
 ## Core Defaults
 
-- prefer a repo-local `.worktrees/` directory
+- place the worktree as a sibling directory next to the main repository
 - always create a fresh feature branch
 - branch off the repository default branch unless the user explicitly asked for a different base
 - infer branch naming from recent non-default branches when a clear style exists
@@ -46,19 +46,13 @@ Do not force it for tiny trivial edits where a dedicated worktree would be needl
 
 Default location:
 
-- `.worktrees/` inside the repository root
+- a sibling directory next to the main repository root, named `<repo-name>-<path-safe-branch-name>`
 
-If `.worktrees/` does not exist, create it.
+Example: main repo `foo` on the default branch → sibling `foo-feature-a-thing` for branch `feature/a-thing`.
 
-Before using it, ensure it is ignored by git.
+Because the worktree lives outside the main repository, no `.gitignore` entry is needed for it.
 
-If `.worktrees/` is not ignored:
-
-1. add `.worktrees/` to `.gitignore`
-2. keep that change as part of the repository workflow update
-3. then create the worktree
-
-Do not use a global worktree directory by default for this workflow.
+Do not place worktrees inside the repository root.
 
 ## Dirty Main Checkout
 
@@ -109,14 +103,14 @@ If the intended branch name already exists, generate a fresh unique variant rath
 
 Place the linked worktree at:
 
-- `.worktrees/<path-safe-branch-name>`
+- `../<repo-name>-<path-safe-branch-name>` (sibling to the main repository)
 
-If the branch name contains `/`, convert the path component to a safe directory name such as replacing `/` with `-`.
+If the branch name contains `/`, replace `/` with `-` to form the path-safe component.
 
 Example:
 
-- branch: `feature/user-search`
-- path: `.worktrees/feature-user-search`
+- repo: `foo`, branch: `feature/user-search`
+- path: `../foo-feature-user-search`
 
 ## Creation Workflow
 
@@ -124,18 +118,16 @@ Example:
 
 Check:
 
-- repository root
+- repository root and its name
 - current branch
 - default branch
 - dirty main checkout state
-- whether `.worktrees/` exists
-- whether `.worktrees/` is ignored
 - recent non-default branch names for naming inference
 
-### 2. Prepare `.worktrees/`
+### 2. Determine the sibling path
 
-- create `.worktrees/` if needed
-- ensure `.worktrees/` is ignored by git
+- compute the sibling path as `../<repo-name>-<path-safe-branch-name>`
+- verify the path does not already exist
 
 ### 3. Create the fresh worktree branch
 
@@ -200,7 +192,6 @@ Those belong to later workflow stages.
 
 - creating feature work directly in the repository root when a worktree should be used
 - branching from the wrong base branch
-- forgetting to ignore `.worktrees/`
 - staying in the main checkout instead of switching into the new worktree
 - reusing an old branch when the user asked for a fresh slice
 - letting the main checkout drift away from the default branch unnecessarily

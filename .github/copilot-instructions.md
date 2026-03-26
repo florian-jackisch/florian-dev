@@ -53,7 +53,7 @@ florian-dev/
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear. Planning should review the draft plan internally, apply material review findings, and present the revised plan as the single approval point before implementation.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
-- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical. When the session name still looks generic, include the new branch name in the session rename handoff too.
+- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated sibling directory (e.g. `../repo-feature-branch`) on a fresh branch while the repository root stays on the default branch when practical. When the session name still looks generic, include the new branch name in the session rename handoff too.
 - Use `coding` for implementation work.
 - Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
@@ -68,7 +68,7 @@ florian-dev/
 - Use `rust` alongside `coding` or `refactoring` for Rust-specific work.
 - Use `cpp` alongside `coding` or `refactoring` for C++-specific work.
 - Use `bash` alongside `coding` or `refactoring` for Bash-specific work.
-- Keep repo-local linked worktrees under `.worktrees/` and ensure that directory stays git-ignored.
+- Place linked worktrees as sibling directories next to the main repository root, named `<repo-name>-<path-safe-branch-name>`.
 
 ## Vendoring External Skills
 

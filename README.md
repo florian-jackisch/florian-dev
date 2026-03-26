@@ -17,7 +17,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 | `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
 | `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
 | `git` | Git hygiene, commit workflow, and MR authoring policy with human commit messages, draft-first MRs, user-reviewed MR text updates, no conventional prefixes, and no `Co-authored-by` trailers |
-| `start-worktree` | Worktree-first execution handoff that creates an isolated repo-local `.worktrees/` checkout on a fresh branch, infers repo branch naming when possible, switches the session into the new worktree, and updates a generic session name to include the branch when appropriate |
+| `start-worktree` | Worktree-first execution handoff that creates an isolated sibling-directory checkout (e.g. `../repo-feature-branch`) on a fresh branch, infers repo branch naming when possible, switches the session into the new worktree, and updates a generic session name to include the branch when appropriate |
 | `auto-draft` | Autonomous draft-delivery workflow that internally brainstorms and plans, implements in a fresh worktree on a fresh branch, opens a new draft MR, runs a capped final-review fix loop, and leaves the result as a manual-review draft |
 | `python` | Python-specific companion workflow with type hints, scoped type checking, `uv`, `ruff`, `pytest`, refactor-first testing, and modern library preferences such as `dataclasses`, `rich`, `typer`, and `pydantic` |
 | `rust` | Rust-specific companion workflow with type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, low-mock testing, and clearer structs over unclear tuples |
@@ -50,7 +50,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 ## Integration Notes
 
 - `context7` should be part of normal planning and implementation workflow for current library and framework API lookups rather than treated as an optional separate skill.
-- `start-worktree` should be the normal handoff before non-trivial coding so the repository root can remain on the default branch while feature work happens inside `.worktrees/`. When the session name is still generic, it should be updated to include the new branch too.
+- `start-worktree` should be the normal handoff before non-trivial coding so the repository root can remain on the default branch while feature work happens in a sibling directory next to the repository root. When the session name is still generic, it should be updated to include the new branch too.
 - `auto-draft` is an explicit fast-path exception, not the default workflow. It may create or update draft MR text directly because the user opted into that autonomous flow, but it still must keep the MR as draft and unassigned.
 - GitHub integration should generally use Copilot CLI's built-in GitHub MCP rather than a plugin-local replacement.
 - The bundled GitLab MCP uses `glab mcp serve`, so `glab` must be installed and authenticated.
