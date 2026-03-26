@@ -46,15 +46,14 @@ florian-dev/
    - `examples/`
    - `assets/`
 4. If the skill comes from `skills.sh`, vendor it into `skills/` instead of keeping any `.agents/` install output.
-5. Update `README.md` and `ROADMAP.md` when relevant.
+5. Update `README.md` when relevant.
 6. Bump `plugin.json` version before pushing.
 
 ## Workflow Fit
 
 - Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
-- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical.
-- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow that internally brainstorms, plans, implements in a fresh worktree on a fresh branch, opens a new draft MR, runs final review in a capped loop, and leaves the MR as draft for manual review.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
+- Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical.
 - Use `coding` for implementation work.
 - Use Context7 during planning and implementation whenever work depends on external libraries, frameworks, SDKs, or APIs. Prefer current docs over memory so integrations do not invent or rely on stale API shapes.
 - For code workflow skills, prefer a hybrid refactoring cadence: small local cleanup inside red/green/refactor, plus a deliberate pre-review refactoring checkpoint when design pressure accumulates.
@@ -62,12 +61,13 @@ florian-dev/
 - Use `checkpoint` during planning or implementation when work should pause for a light opposite-family sanity check before continuing; keep it to one reviewer by default.
 - Use `final-review` only on explicit request for MR/PR review or draft-undraft decisions; do not route into it automatically from other workflows. When used, default to two reviewers, with a one-reviewer fast path only for truly tiny changes and optional built-in `/fleet` escalation for especially large or high-risk reviews.
 - Use `git` for commit preparation, commit messages, and MR authoring policy; never add `Co-authored-by`, avoid conventional-commit prefixes, keep summaries under 72 characters, create new MRs as draft, never undraft or assign reviewers automatically, and draft MR title/description/comment updates in Markdown for user review before applying them.
-- Use `mermaid` alongside `writing` or `planning` when Markdown docs, specs, or plans would be clearer with Mermaid diagrams. Prefer embedded Mermaid blocks and simple maintainable diagrams before introducing a polished rendering pipeline.
+- Use `auto-draft` when the user explicitly wants a fast autonomous draft-delivery workflow from prompt to draft merge request.
+- Use `mermaid` alongside `writing` or `planning` when Markdown docs, specs, or plans would benefit from diagrams.
 - For Markdown files, prefer drafting first without forcing cleanup too early. Before committing Markdown work, keep cleanup deliberate and diff-preserving: prefer new files first, and keep cleanup scoped to touched sections of existing files when practical so the diff stays small. Avoid broad churn in untouched parts of existing files unless that wider cleanup is a deliberate part of the change.
-- Use `python` alongside `coding` or `refactoring` for Python-specific work; prefer type hints, `uv`, `ruff`, `pytest`, refactor-first test design, and named data structures over unclear tuples. If a repo has no type checker configured, still run a scoped checker on changed Python code, but keep fixes mostly to the touched area unless an obvious coupled bug appears.
-- Use `rust` alongside `coding` or `refactoring` for Rust-specific work; prefer type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, clearer structs over unclear tuples, and refactor-first testing over mock-heavy design. If a repo has no wrapped Rust verification flow, still run the relevant `cargo fmt --check`, `cargo clippy`, and `cargo test` commands for the touched crate or workspace area.
-- Use `cpp` alongside `coding` or `refactoring` for C++-specific work; prefer modern C++ within the target standard, CMake with Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, balanced use of templates and header-only libraries, refactor-first low-mock testing, and named types over unclear tuples. If a repo has no wrapped C++ verification flow, still run the relevant configure, build, test, formatting, linting, and sanitizer checks for the touched target or project area when practical.
-- Use `bash` alongside `coding` or `refactoring` for Bash-specific work; prefer `#!/usr/bin/env bash` plus immediate `set -euo pipefail`, `shellcheck`, `shfmt`, executable scripts, careful quoting, arrays over unsafe word splitting, and explicit shell error handling. If a repo has no wrapped shell verification flow, still run the relevant lint, format, permission, and execution checks for the touched script area when practical.
+- Use `python` alongside `coding` or `refactoring` for Python-specific work.
+- Use `rust` alongside `coding` or `refactoring` for Rust-specific work.
+- Use `cpp` alongside `coding` or `refactoring` for C++-specific work.
+- Use `bash` alongside `coding` or `refactoring` for Bash-specific work.
 - Keep repo-local linked worktrees under `.worktrees/` and ensure that directory stays git-ignored.
 
 ## Vendoring External Skills
