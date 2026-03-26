@@ -78,6 +78,8 @@ Before refactoring:
 
 If you cannot verify behavior at all, stop and create a safer path first.
 
+If refactoring uncovers unexpected failures, use `debugging` to understand the cause before reverting or guessing.
+
 ### 2. Choose the smallest valuable move
 
 Prefer one focused change at a time:

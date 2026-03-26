@@ -77,6 +77,8 @@ For coding work, the default loop is:
 5. refactor while preserving green
 6. commit the working state
 
+If a test fails and the cause is not obvious from the diff, use `debugging` before guessing at fixes.
+
 If the project has no automated tests for the area, create the smallest realistic verification path available and still prove the behavior before moving on.
 
 Small local refactors after a green test are normal. Do not force every working commit to include a broader refactor just for the sake of it.
