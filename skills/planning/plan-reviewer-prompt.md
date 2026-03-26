@@ -14,7 +14,7 @@ Populate the sections below before dispatching. Do not send the template with pl
 
 ## Goal
 
-Verify that the plan is specific, executable, and aligned with the idea or requirements.
+Verify that the plan is specific, executable, and aligned with the idea or requirements. The review output is for the orchestrating agent to refine the plan before presenting the revised plan to the user.
 
 ## Plan / Requirements
 
@@ -47,6 +47,8 @@ Do not block approval for stylistic preferences, phrasing tweaks, or extra nice-
 
 ## Output Format
 
+Return focused execution feedback so the orchestrating agent can update the plan before user approval.
+
 ## Plan Review
 
 **Status:** Approved | Issues Found
@@ -56,3 +58,5 @@ Do not block approval for stylistic preferences, phrasing tweaks, or extra nice-
 
 **Recommendations:**
 - [optional non-blocking suggestion]
+
+Do not ask the user whether the review suggestions should be applied. Assume the orchestrating agent will fold material findings into the next revision of the plan before handoff.

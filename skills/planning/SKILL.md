@@ -19,7 +19,7 @@ Use that built-in planning flow as the default place to draft and maintain the h
 
 Think of this skill as an enhancement layer for built-in planning, not a replacement for it.
 
-Use `/plan` or plan mode to create and maintain the plan, then use this skill to make the plan more specific, more executable, and more disciplined.
+Use `/plan` or plan mode to create and maintain the plan, then use this skill to make the plan more specific, more executable, and more disciplined. Treat plan review as an internal refinement loop: apply material review findings to the plan before handing it back to the user.
 
 Specifically, this skill should make the built-in plan:
 
@@ -44,6 +44,7 @@ Specifically, this skill should make the built-in plan:
 - Suggest built-in `/fleet` when the plan contains independent, well-bounded tasks that can be executed in parallel.
 - Keep tasks small enough to produce frequent working commits.
 - Review the plan before implementation starts.
+- Fold material review findings back into the plan before asking the user to approve the handoff to implementation.
 
 ## Before Writing the Plan
 
@@ -150,11 +151,11 @@ The review should check:
 - places where the plan assumes library APIs without checking current documentation
 - whether the TDD and verification path is actually executable
 
-If the review finds real gaps, fix the plan and review it again.
+If the review finds real gaps, fix the plan, update the written plan, and review it again as needed. Do not ask the user to approve the reviewer feedback separately from the revised plan.
 
 ## Handoff to Execution
 
-Once the plan is approved, execution should normally use:
+Once the revised plan is approved, execution should normally use:
 
 - `start-worktree` before non-trivial implementation so the session moves into an isolated worktree rooted at `.worktrees/`
 - `coding` for implementation work

@@ -51,7 +51,7 @@ florian-dev/
 
 ## Workflow Fit
 
-- Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear.
+- Use `planning` to strengthen built-in `/plan` or plan mode once an idea is clear. Planning should review the draft plan internally, apply material review findings, and present the revised plan as the single approval point before implementation.
 - During planning, consider built-in `/fleet` when the work naturally splits into independent, well-bounded tasks that can run in parallel.
 - Use `start-worktree` after planning approval and before non-trivial coding so execution moves into an isolated repo-local `.worktrees/` checkout on a fresh branch while the repository root stays on the default branch when practical.
 - Use `coding` for implementation work.
