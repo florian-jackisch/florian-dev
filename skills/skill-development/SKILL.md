@@ -195,7 +195,7 @@ After testing, users may request improvements. Common iterations:
 Plugin skills live in the plugin's `skills/` directory:
 
 ```
-florian-dev/
+flow/
 ├── plugin.json
 ├── skills/
 │   └── my-skill/
@@ -216,7 +216,7 @@ Copilot CLI automatically discovers skills by scanning the `skills/` directory f
 Test skills by reinstalling the plugin:
 
 ```
-/plugin install florian-jackisch/florian-dev
+/plugin install florian-jackisch/flow
 ```
 
 Then verify with `/skills` that the skill appears with the correct name and description. Invoke it and confirm it behaves as expected.

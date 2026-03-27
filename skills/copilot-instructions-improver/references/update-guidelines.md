@@ -20,7 +20,7 @@ Why: These rules change behavior and prevent repeated mistakes.
 ### 2. Real Workflow Steps
 
 ```markdown
-- Reinstall the plugin with `/plugin install florian-jackisch/florian-dev` after adding a skill.
+- Reinstall the plugin with `/plugin install florian-jackisch/flow` after adding a skill.
 - Run `/restart` if the current session does not pick up the new skill immediately.
 ```
 

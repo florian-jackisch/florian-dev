@@ -1,12 +1,12 @@
 {
-  "name": "florian-dev",
+  "name": "flow",
   "description": "Personal GitHub Copilot CLI plugin \u2014 curated repo-local skills for everyday development.",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "author": {
     "name": "Florian Jackisch"
   },
-  "homepage": "https://github.com/florian-jackisch/florian-dev",
-  "repository": "https://github.com/florian-jackisch/florian-dev",
+  "homepage": "https://github.com/florian-jackisch/flow",
+  "repository": "https://github.com/florian-jackisch/flow",
   "license": "MIT",
   "keywords": [
     "personal",

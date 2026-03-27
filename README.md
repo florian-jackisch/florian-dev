@@ -1,11 +1,11 @@
-# florian-dev
+# flow
 
 Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday development.
 
 ## Install
 
 ```text
-/plugin install florian-jackisch/florian-dev
+/plugin install florian-jackisch/flow
 ```
 
 ## Included Skills

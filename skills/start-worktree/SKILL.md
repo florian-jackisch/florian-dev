@@ -151,7 +151,7 @@ If it does, rename the session so it includes the new branch name.
 
 Good examples:
 
-- `florian-dev: add-session-rename-handoff`
+- `flow: add-session-rename-handoff`
 - `repo-name: feature-user-search`
 
 If the session name already looks intentionally custom, keep it.

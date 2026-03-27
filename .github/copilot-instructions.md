@@ -1,18 +1,18 @@
-# Copilot Instructions — florian-dev
+# Copilot Instructions — flow
 
 This repository is a **skills-only** GitHub Copilot CLI plugin.
 
 ## Plugin Identity
 
-- Name: `florian-dev`
-- Install: `/plugin install florian-jackisch/florian-dev`
+- Name: `flow`
+- Install: `/plugin install florian-jackisch/flow`
 - Format: standalone plugin with `plugin.json` at repo root
 - Scope: curated repo-local skills plus shared MCP config
 
 ## Repository Layout
 
 ```text
-florian-dev/
+flow/
 ├── plugin.json
 ├── .mcp.json
 ├── skills/
@@ -135,7 +135,7 @@ After changes:
 
 1. Reinstall the plugin:
    ```text
-   /plugin install florian-jackisch/florian-dev
+   /plugin install florian-jackisch/flow
    ```
 2. Check `/skills` to confirm the expected skill list.
 3. If the current session does not pick up a new skill immediately, run `/restart`.
