@@ -1,6 +1,6 @@
 ---
 name: start-worktree
-description: 'This skill should be used after planning approval and before non-trivial coding when work should move into an isolated git worktree on a fresh feature branch. It creates a sibling directory next to the main repository (e.g. `foo-feature-a-thing` alongside `foo`), infers branch naming from repo history when possible, keeps the main checkout on the default branch when practical, and moves subsequent work into the new worktree root.'
+description: 'This skill should be used after planning approval and before non-trivial coding when work should move into an isolated git worktree on a fresh feature branch. It creates a sibling directory next to the main repository (e.g. `foo.feature-a-thing` alongside `foo`), infers branch naming from repo history when possible, keeps the main checkout on the default branch when practical, and moves subsequent work into the new worktree root.'
 ---
 
 # Start Worktree
@@ -46,9 +46,9 @@ Do not force it for tiny trivial edits where a dedicated worktree would be needl
 
 Default location:
 
-- a sibling directory next to the main repository root, named `<repo-name>-<path-safe-branch-name>`
+- a sibling directory next to the main repository root, named `<repo-name>.<path-safe-branch-name>`
 
-Example: main repo `foo` on the default branch → sibling `foo-feature-a-thing` for branch `feature/a-thing`.
+Example: main repo `foo` on the default branch → sibling `foo.feature-a-thing` for branch `feature/a-thing`.
 
 Because the worktree lives outside the main repository, no `.gitignore` entry is needed for it.
 
@@ -103,14 +103,14 @@ If the intended branch name already exists, generate a fresh unique variant rath
 
 Place the linked worktree at:
 
-- `../<repo-name>-<path-safe-branch-name>` (sibling to the main repository)
+- `../<repo-name>.<path-safe-branch-name>` (sibling to the main repository)
 
 If the branch name contains `/`, replace `/` with `-` to form the path-safe component.
 
 Example:
 
 - repo: `foo`, branch: `feature/user-search`
-- path: `../foo-feature-user-search`
+- path: `../foo.feature-user-search`
 
 ## Creation Workflow
 
@@ -126,7 +126,7 @@ Check:
 
 ### 2. Determine the sibling path
 
-- compute the sibling path as `../<repo-name>-<path-safe-branch-name>`
+- compute the sibling path as `../<repo-name>.<path-safe-branch-name>`
 - verify the path does not already exist
 
 ### 3. Create the fresh worktree branch
