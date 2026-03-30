@@ -1,17 +1,13 @@
 ---
 name: python
-description: 'This skill should be used alongside general execution skills for Python implementation, refactoring, testing, or project setup work. It favors pervasive type hints, `ruff`, `uv`, `ty` when the project uses it, `pytest`, refactor-first test design, dataclasses over unclear tuples, and modern Python libraries such as `rich`, `typer`, and `pydantic`.'
+description: 'This skill should be used for Python implementation, testing, or project setup work. It favors pervasive type hints, `ruff`, `uv`, `ty` when the project uses it, `pytest`, refactor-first test design, dataclasses over unclear tuples, and modern Python libraries such as `rich`, `typer`, and `pydantic`.'
 ---
 
 # Python
 
 Use this skill for Python-specific work.
 
-This skill complements `coding` and `refactoring`; it does not replace them.
-
-- use `coding` for the general execution workflow
-- use `refactoring` for deliberate cleanup passes
-- use `python` to apply Python-specific toolchain, typing, testing, and library preferences
+Use `python` to apply Python-specific toolchain, typing, testing, and library preferences during Python work.
 
 This skill is intentionally opinionated, but it should still respect the repository it is working in.
 

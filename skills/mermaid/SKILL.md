@@ -1,16 +1,15 @@
 ---
 name: mermaid
-description: 'This skill should be used when Markdown documentation, plans, specs, or architecture notes would benefit from Mermaid diagrams. It helps choose the right diagram type, write valid focused Mermaid syntax, keep diagrams maintainable in version control, and pair Mermaid naturally with `writing` or `planning` instead of treating polished rendering as the default.'
+description: 'This skill should be used when Markdown documentation, specifications, architecture notes, or workflow explanations would benefit from Mermaid diagrams. It helps choose the right diagram type, write valid focused Mermaid syntax, keep diagrams maintainable in version control, and pair Mermaid naturally with `writing` instead of treating polished rendering as the default.'
 ---
 
 # Mermaid
 
-Use this skill when documentation or planning would benefit from Mermaid diagrams.
+Use this skill when documentation or technical writing would benefit from Mermaid diagrams.
 
-This skill complements `writing` and `planning`; it does not replace them.
+This skill complements `writing`; it does not replace it.
 
 - use `writing` for the overall document or explanation
-- use `planning` when the diagram belongs in a plan or architecture outline
 - use `mermaid` to choose diagram types and write clear, maintainable Mermaid syntax inside Markdown
 
 This skill is intentionally opinionated, but it should still respect the repository it is working in.
