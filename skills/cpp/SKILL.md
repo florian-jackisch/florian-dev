@@ -1,17 +1,13 @@
 ---
 name: cpp
-description: 'This skill should be used alongside general execution skills for C++ implementation, refactoring, testing, benchmarking, profiling, build setup, or dependency management work. It favors modern C++ within the target standard, CMake with Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, balanced use of templates and header-only libraries, and clear named types over unclear tuples.'
+description: 'This skill should be used for C++ implementation, testing, benchmarking, profiling, build setup, or dependency management work. It favors modern C++ within the target standard, CMake with Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, balanced use of templates and header-only libraries, and clear named types over unclear tuples.'
 ---
 
 # C++
 
 Use this skill for C++-specific work.
 
-This skill complements `coding` and `refactoring`; it does not replace them.
-
-- use `coding` for the general execution workflow
-- use `refactoring` for deliberate cleanup passes
-- use `cpp` to apply C++-specific design, build, tooling, dependency, and testing preferences
+Use `cpp` to apply C++-specific design, build, tooling, dependency, and testing preferences during C++ work.
 
 This skill is intentionally opinionated, but it should still respect the repository it is working in.
 

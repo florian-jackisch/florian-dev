@@ -1,17 +1,13 @@
 ---
 name: bash
-description: 'This skill should be used alongside general execution skills for Bash implementation, refactoring, script hardening, automation, or CLI glue work. It favors portable `#!/usr/bin/env bash` shebangs with immediate `set -euo pipefail`, `shellcheck` for linting, `shfmt` for formatting, executable scripts, careful quoting, arrays over unsafe word splitting, and small function-based script structure.'
+description: 'This skill should be used for Bash implementation, script hardening, automation, or CLI glue work. It favors portable `#!/usr/bin/env bash` shebangs with immediate `set -euo pipefail`, `shellcheck` for linting, `shfmt` for formatting, executable scripts, careful quoting, arrays over unsafe word splitting, and small function-based script structure.'
 ---
 
 # Bash
 
 Use this skill for Bash-specific work.
 
-This skill complements `coding` and `refactoring`; it does not replace them.
-
-- use `coding` for the general execution workflow
-- use `refactoring` for deliberate cleanup passes
-- use `bash` to apply shell-specific design, safety, linting, formatting, and script-hardening preferences
+Use `bash` to apply shell-specific design, safety, linting, formatting, and script-hardening preferences during Bash work.
 
 This skill is intentionally opinionated, but it should still respect the repository it is working in.
 

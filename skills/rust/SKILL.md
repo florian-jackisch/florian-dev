@@ -1,17 +1,13 @@
 ---
 name: rust
-description: 'This skill should be used alongside general execution skills for Rust implementation, refactoring, testing, or crate setup work. It favors strong type-first design, `cargo clippy` for linting, `cargo fmt` for formatting, `cargo test` for testing, low-mock test design, clear structs over unclear tuples, and idiomatic error handling.'
+description: 'This skill should be used for Rust implementation, testing, or crate setup work. It favors strong type-first design, `cargo clippy` for linting, `cargo fmt` for formatting, `cargo test` for testing, low-mock test design, clear structs over unclear tuples, and idiomatic error handling.'
 ---
 
 # Rust
 
 Use this skill for Rust-specific work.
 
-This skill complements `coding` and `refactoring`; it does not replace them.
-
-- use `coding` for the general execution workflow
-- use `refactoring` for deliberate cleanup passes
-- use `rust` to apply Rust-specific design, tooling, linting, formatting, and testing preferences
+Use `rust` to apply Rust-specific design, tooling, linting, formatting, and testing preferences during Rust work.
 
 This skill is intentionally opinionated, but it should still respect the repository it is working in.
 

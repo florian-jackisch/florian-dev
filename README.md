@@ -1,6 +1,6 @@
 # flow
 
-Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday development.
+Personal GitHub Copilot CLI plugin for lightweight personal preferences, language companions, and tooling skills.
 
 ## Install
 
@@ -8,35 +8,42 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 /plugin install florian-jackisch/flow
 ```
 
+## Optional Global Preferences
+
+To install the global Copilot preferences that go with this plugin:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/florian-jackisch/flow/main/install.sh | bash
+```
+
+The installer writes a small managed block to `~/.copilot/copilot-instructions.md` that keeps:
+
+- no `Co-authored-by` trailers for Copilot
+- brief commit messages with one optional body paragraph
+- `obra/superpowers` opt-in rather than always-on
+- new PRs and MRs draft-first, with no automatic reviewer assignment
+
 ## Included Skills
 
 | Skill | Description |
 |-------|-------------|
-| `skill-development` | Guidance for creating effective skills — structure, frontmatter, progressive disclosure, and validation |
-| `find-skills` | Search skills.sh, evaluate results, and vendor selected skills into the repo-local `skills/` directory |
-| `copilot-instructions-improver` | Audit and improve repo-local GitHub Copilot instruction files, produce a quality report, and propose targeted edits |
-| `debugging` | Evidence-first debugging with root-cause analysis, minimal hypothesis testing, and fix verification |
-| `git` | Git hygiene, commit workflow, and MR authoring policy with human commit messages, draft-first MRs, user-reviewed MR text updates, no conventional prefixes, and no `Co-authored-by` trailers |
-| `start-worktree` | Worktree-first execution handoff that creates an isolated sibling-directory checkout (e.g. `../repo.feature-branch`) on a fresh branch, infers repo branch naming when possible, switches the session into the new worktree, and updates a generic session name to include the branch when appropriate |
-| `auto-draft` | Autonomous draft-delivery workflow that internally brainstorms and plans, implements in a fresh worktree on a fresh branch, opens a new draft MR, runs a capped final-review fix loop, and leaves the result as a manual-review draft |
-| `python` | Python-specific companion workflow with type hints, scoped type checking, `uv`, `ruff`, `pytest`, refactor-first testing, and modern library preferences such as `dataclasses`, `rich`, `typer`, and `pydantic` |
-| `rust` | Rust-specific companion workflow with type-first design, `cargo clippy`, `cargo fmt`, `cargo test`, low-mock testing, and clearer structs over unclear tuples |
-| `cpp` | C++-specific companion workflow with modern C++, CMake plus Ninja, `clang-format`, `clang-tidy`, sanitizer-backed verification, Catch2 or GoogleTest, Google Benchmark when profiling matters, refactor-first low-mock testing, and balanced use of templates and header-only libraries |
-| `bash` | Bash-specific companion workflow with portable shebang plus `set -euo pipefail`, `shellcheck`, `shfmt`, executable scripts, careful quoting, arrays over unsafe word splitting, and explicit shell error handling |
-| `planning` | Implementation planning with exact files, red/green/refactor task structure, feature-branch discipline, built-in `/fleet` suggestions for well-bounded independent parallel work, and plan review before execution |
-| `coding` | Execution workflow with branch hygiene, reuse-first coding, red/green/refactor cadence, deliberate cleanup when needed, and verification |
-| `refactoring` | Behavior-preserving cleanup workflow for small in-cycle refactors and deliberate pre-review refactoring checkpoints |
-| `checkpoint` | In-progress review checkpoint for planning or implementation, with one opposite-family reviewer by default, plan/slice awareness, refactoring-pressure checks, and a fast fix-and-continue loop |
-| `final-review` | Heavy MR/PR review workflow for reviewing others' changes or deciding whether your own draft is ready to undraft, with a default two-reviewer path, a tiny-change fast path, and optional `/fleet` escalation for especially large or high-risk reviews |
-| `writing` | Writing workflow for specs, docs, runbooks, and other non-code tasks with audience and accuracy focus |
-| `mermaid` | Mermaid diagram companion workflow for Markdown docs and plans, with diagram-type selection, focused syntax, maintainable embedded diagrams, and a docs-first bias over polished rendering pipelines |
-| `brainstorming` | Free-form ideation with light structure, critical questions, and web research without forcing specs |
-| `interview` | Deep requirement clarification through structured follow-up questions and research loops |
-| `devils-advocate` | Pre-commitment adversarial reasoning to challenge choices before they harden |
+| `bash` | Bash implementation and script-hardening companion with portable shebangs, quoting discipline, and shell tooling preferences |
+| `copilot-instructions-improver` | Audit and improve repo-local Copilot instruction files with targeted updates |
+| `cpp` | C++ companion with modern C++, CMake plus Ninja, clang tooling, and sanitizer-minded verification |
+| `find-skills` | Search skills.sh and vendor selected skills into this repository instead of installing them globally |
+| `mermaid` | Mermaid diagram companion for documentation, specs, and architecture notes |
+| `no-superpowers` | Session opt-out that disables automatic `obra/superpowers` workflow use unless explicitly requested |
+| `python` | Python companion with type hints, `uv`, `ruff`, `pytest`, and modern library preferences |
+| `rust` | Rust companion with type-first design, `cargo fmt`, `cargo clippy`, and `cargo test` discipline |
+| `skill-development` | Guidance for creating and refining Copilot skills |
+| `writing` | Writing-focused workflow for specs, docs, runbooks, and other non-code content |
 
 ## Notes
 
 - This plugin is **skills-only**. It does not ship agents.
+- It is intentionally lightweight and is designed to coexist with `obra/superpowers`.
+- `obra/superpowers` can own the heavyweight workflow skills; `flow` stays focused on personal preferences and reusable companions.
+- If both plugins are installed and you want a lightweight session, invoke `/no-superpowers` at the start of the conversation.
 - External skills should be vendored into `skills/`, not installed globally.
 - If a newly added skill does not appear immediately after reinstalling the plugin, run `/restart`.
 
@@ -49,10 +56,7 @@ Personal GitHub Copilot CLI plugin with curated repo-local skills for everyday d
 
 ## Integration Notes
 
-- `context7` should be part of normal planning and implementation workflow for current library and framework API lookups rather than treated as an optional separate skill.
-- `start-worktree` should be the normal handoff before non-trivial coding so the repository root can remain on the default branch while feature work happens in a sibling directory next to the repository root. When the session name is still generic, it should be updated to include the new branch too.
-- `auto-draft` is an explicit fast-path exception, not the default workflow. It may create or update draft MR text directly because the user opted into that autonomous flow, but it still must keep the MR as draft and unassigned.
-- GitHub integration should generally use Copilot CLI's built-in GitHub MCP rather than a plugin-local replacement.
+- Prefer Copilot CLI's built-in GitHub MCP rather than bundling a plugin-local replacement.
 - The bundled GitLab MCP uses `glab mcp serve`, so `glab` must be installed and authenticated.
 
 ## License

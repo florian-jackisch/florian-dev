@@ -19,7 +19,7 @@ Use this skill for:
 - release notes and changelogs
 - user-facing technical guides
 
-If the task is primarily code implementation, use `coding` instead.
+If the task is primarily code implementation, use your normal implementation workflow instead.
 
 ## Core Principles
 
@@ -87,11 +87,7 @@ Check:
 
 ## Relationship to the Other Skills
 
-- use `brainstorming` when the ideas are still loose
-- use `planning` when the output is an implementation plan
-- use `coding` for executable behavior changes
 - use `mermaid` when Markdown documentation would benefit from diagrams
-- use `checkpoint` when written work benefits from an in-progress sanity check before broader handoff
 
 ## Red Flags
 
