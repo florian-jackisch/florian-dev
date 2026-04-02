@@ -21,7 +21,11 @@ flow/
 │       ├── SKILL.md
 │       └── [scripts|references|examples|assets]
 ├── .github/
-│   └── copilot-instructions.md
+│   ├── copilot-instructions.md
+│   └── skills/
+│       └── <local-skill>/
+│           ├── SKILL.md
+│           └── [scripts|references|examples|assets]
 ├── README.md
 └── LICENSE
 ```
@@ -58,28 +62,12 @@ flow/
 5. Update `README.md` when relevant.
 6. Bump `plugin.json` version before pushing.
 
-## Vendoring External Skills
+## Repo-Local Vendoring Helper
 
-When bringing in a skill from `skills.sh`, vendor it into this repository instead of leaving it in agent-managed locations.
-
-Preferred workflow:
-
-```bash
-skills/find-skills/scripts/vendor-skill.sh <package> <skill-name>
-```
-
-Example:
-
-```bash
-skills/find-skills/scripts/vendor-skill.sh vercel-labs/skills find-skills
-```
-
-This uses `npx skills add ... --agent github-copilot --copy` in a temporary directory, copies the full installed skill tree into `./skills/<skill-name>/`, and cleans up afterward.
-
-Important:
-
-- Do not use `-g`.
-- Do not rely on `~/.agents/skills` or other global skill state.
+- The vendoring workflow for this repository now lives in the local-only `vendor-skill` skill under `.github/skills/vendor-skill/`.
+- Use that local skill when asked to vendor or update an external skill in this repository.
+- Keep published plugin skills in `./skills/<skill-name>/`.
+- Do not install skills globally or keep `.agents/skills` artifacts in the repository.
 - Review vendored files before committing.
 
 ## Global Preference Installer

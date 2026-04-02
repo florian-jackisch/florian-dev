@@ -30,7 +30,6 @@ The installer writes a small managed block to `~/.copilot/copilot-instructions.m
 | `bash` | Bash implementation and script-hardening companion with portable shebangs, quoting discipline, and shell tooling preferences |
 | `copilot-instructions-improver` | Audit and improve repo-local Copilot instruction files with targeted updates |
 | `cpp` | C++ companion with modern C++, CMake plus Ninja, clang tooling, and sanitizer-minded verification |
-| `find-skills` | Search skills.sh and vendor selected skills into this repository instead of installing them globally |
 | `mermaid` | Mermaid diagram companion for documentation, specs, and architecture notes |
 | `no-superpowers` | Session opt-out that disables automatic `obra/superpowers` workflow use unless explicitly requested |
 | `python` | Python companion with type hints, `uv`, `ruff`, `pytest`, and modern library preferences |
@@ -44,6 +43,7 @@ The installer writes a small managed block to `~/.copilot/copilot-instructions.m
 - It is intentionally lightweight and is designed to coexist with `obra/superpowers`.
 - `obra/superpowers` can own the heavyweight workflow skills; `flow` stays focused on personal preferences and reusable companions.
 - If both plugins are installed and you want a lightweight session, invoke `/no-superpowers` at the start of the conversation.
+- This repository keeps its external-skill vendoring helper as a repo-local skill in `.github/skills/vendor-skill`.
 - External skills should be vendored into `skills/`, not installed globally.
 - If a newly added skill does not appear immediately after reinstalling the plugin, run `/restart`.
 

@@ -16,15 +16,22 @@ fi
 
 package=$1
 skill_name=$2
-repo_root=${3:-$(pwd)}
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+default_repo_root="$(cd -- "$script_dir/../../../.." && pwd)"
+repo_root=${3:-$default_repo_root}
 
 if [[ ! -d "$repo_root" ]]; then
   echo "Repository root does not exist: $repo_root" >&2
   exit 1
 fi
 
+if [[ ! -f "$repo_root/plugin.json" ]]; then
+  echo "Expected plugin.json in repository root: $repo_root" >&2
+  exit 1
+fi
+
 target_dir="$repo_root/skills/$skill_name"
-tmpdir=$(mktemp -d)
+tmpdir="$(mktemp -d)"
 cleanup() {
   rm -rf "$tmpdir"
 }
@@ -57,4 +64,5 @@ cp -R "$installed_dir" "$target_dir"
 
 echo "Vendored skill '$skill_name' from '$package' into '$target_dir'."
 echo "Review the copied files before committing."
+echo "Reinstall the plugin with /plugin install florian-jackisch/flow after review."
 echo "If Copilot CLI does not pick up the new skill on the next turn, run /restart."
