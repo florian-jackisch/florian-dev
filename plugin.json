@@ -1,7 +1,7 @@
 {
   "name": "flow",
   "description": "Personal GitHub Copilot CLI plugin \u2014 curated repo-local skills for everyday development.",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "author": {
     "name": "Florian Jackisch"
   },
@@ -13,6 +13,8 @@
     "skills",
     "productivity"
   ],
-  "skills": "skills/",
+  "skills": ["skills/", "plugins/context7/skills/"],
+  "agents": ["plugins/context7/agents/"],
+  "commands": ["plugins/context7/commands/"],
   "mcpServers": ".mcp.json"
 }

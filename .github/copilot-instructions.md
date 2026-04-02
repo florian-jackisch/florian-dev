@@ -1,6 +1,6 @@
 # Copilot Instructions — flow
 
-This repository is a **skills-only** GitHub Copilot CLI plugin.
+This repository is a lightweight GitHub Copilot CLI plugin centered on skills, MCP servers, and selectively vendored plugin components.
 
 ## Plugin Identity
 
@@ -16,6 +16,16 @@ flow/
 ├── plugin.json
 ├── install.sh
 ├── .mcp.json
+├── plugins/
+│   └── <plugin-name>/
+│       ├── .claude-plugin/plugin.json
+│       ├── .mcp.json
+│       ├── skills/
+│       │   └── <skill-name>/SKILL.md
+│       ├── agents/
+│       │   └── <agent-name>.agent.md
+│       └── commands/
+│           └── <command>.md
 ├── skills/
 │   └── <skill-name>/
 │       ├── SKILL.md
@@ -32,12 +42,11 @@ flow/
 
 ## Core Rules
 
-- This plugin does **not** use agents. Do not add an `agents/` directory or an `agents` entry to `plugin.json`.
 - Keep names lowercase-kebab-case.
 - Keep skill `name` equal to the folder name.
 - Write skill descriptions in third person with concrete trigger phrases.
 - Prefer repo-local skills. Do **not** install skills globally.
-- Use `copilot-instructions-improver` when auditing or rewriting this repo's Copilot instruction files.
+- Keep top-level plugin components lightweight. Only add vendored agents or commands when upstream parity is explicitly desired.
 
 ## Scope and Coexistence
 
@@ -46,6 +55,7 @@ flow/
 - `obra/superpowers` can own heavyweight workflow skills such as brainstorming, planning, TDD, review, and worktree orchestration.
 - Do not reintroduce worktree, planning, implementation-review, or other heavyweight workflow skills here unless explicitly requested.
 - The `no-superpowers` skill is the session-level opt-out when both plugins are installed.
+- Vendored agents or commands are allowed when they are part of an intentional upstream plugin adaptation, such as Context7 parity.
 
 ## Adding or Adapting a Skill
 
@@ -69,6 +79,16 @@ flow/
 - Keep published plugin skills in `./skills/<skill-name>/`.
 - Do not install skills globally or keep `.agents/skills` artifacts in the repository.
 - Review vendored files before committing.
+
+## Vendored Plugins
+
+- Keep vendored plugin source material under `./plugins/<plugin-name>/`.
+- Adapt vendored plugins into `flow`'s single root plugin instead of trying to compose nested plugins.
+- Add vendored skill paths through the root `plugin.json`.
+- Add vendored agent and command paths through the root `plugin.json` when exact upstream parity is required.
+- Aggregate vendored MCP definitions in the root `.mcp.json`; it remains the Copilot-facing source of truth for MCP servers.
+- Use the local-only `vendor-plugin` skill under `.github/skills/vendor-plugin/` when asked to vendor or update an external plugin.
+- The vendored Context7 payload comes from `upstash/context7:plugins/claude/context7`.
 
 ## Global Preference Installer
 
