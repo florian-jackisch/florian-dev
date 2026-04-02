@@ -1,7 +1,7 @@
 {
   "name": "flow",
   "description": "Personal GitHub Copilot CLI plugin \u2014 curated repo-local skills for everyday development.",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": {
     "name": "Florian Jackisch"
   },

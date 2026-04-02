@@ -13,7 +13,7 @@ managed_block=$(
 
 - Never add `Co-authored-by` trailers for Copilot.
 - Keep commit messages brief: one summary line under 72 characters, plus one optional explanatory paragraph when useful.
-- Treat `obra/superpowers` as opt-in. Do not auto-invoke Superpowers skills unless I explicitly request them.
+- Keep the default workflow lightweight and direct. Do not opt into extra workflow orchestration unless I explicitly request it.
 - New pull requests and merge requests should start as draft. Never undraft them or assign reviewers automatically.
 <!-- /flow-preferences -->
 EOF

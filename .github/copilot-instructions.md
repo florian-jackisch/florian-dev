@@ -52,9 +52,8 @@ flow/
 
 - `flow` is intentionally lightweight.
 - `flow` owns personal preferences, language companions, documentation helpers, and skill-authoring tooling.
-- `obra/superpowers` can own heavyweight workflow skills such as brainstorming, planning, TDD, review, and worktree orchestration.
+- Keep heavyweight workflow orchestration out of `flow`; it should stay focused on personal preferences and reusable companions.
 - Do not reintroduce worktree, planning, implementation-review, or other heavyweight workflow skills here unless explicitly requested.
-- The `no-superpowers` skill is the session-level opt-out when both plugins are installed.
 - Vendored agents or commands are allowed when they are part of an intentional upstream plugin adaptation, such as Context7 parity.
 
 ## Adding or Adapting a Skill
@@ -97,7 +96,7 @@ flow/
 - The managed block should express the personal defaults that should apply across repositories:
   - no `Co-authored-by` trailers for Copilot
   - brief commit messages with one optional body paragraph
-  - `obra/superpowers` is opt-in unless explicitly requested
+  - lightweight default workflow with no automatic extra orchestration unless explicitly requested
   - draft-first PR/MR behavior with no automatic reviewer assignment
 
 ## MCP Notes

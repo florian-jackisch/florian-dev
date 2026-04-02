@@ -20,7 +20,7 @@ The installer writes a small managed block to `~/.copilot/copilot-instructions.m
 
 - no `Co-authored-by` trailers for Copilot
 - brief commit messages with one optional body paragraph
-- `obra/superpowers` opt-in rather than always-on
+- lightweight default workflow with no automatic extra orchestration
 - new PRs and MRs draft-first, with no automatic reviewer assignment
 
 ## Included Skills
@@ -31,7 +31,6 @@ The installer writes a small managed block to `~/.copilot/copilot-instructions.m
 | `cpp` | C++ companion with modern C++, CMake plus Ninja, clang tooling, and sanitizer-minded verification |
 | `context7-mcp` | Use Context7 for current library and framework documentation instead of relying on stale training data |
 | `mermaid` | Mermaid diagram companion for documentation, specs, and architecture notes |
-| `no-superpowers` | Session opt-out that disables automatic `obra/superpowers` workflow use unless explicitly requested |
 | `python` | Python companion with type hints, `uv`, `ruff`, `pytest`, and modern library preferences |
 | `rust` | Rust companion with type-first design, `cargo fmt`, `cargo clippy`, and `cargo test` discipline |
 | `skill-development` | Guidance for creating and refining Copilot skills |
@@ -52,9 +51,7 @@ The installer writes a small managed block to `~/.copilot/copilot-instructions.m
 ## Notes
 
 - This plugin is intentionally lightweight, but vendored plugin parity may include agents and commands when explicitly desired.
-- It is intentionally lightweight and is designed to coexist with `obra/superpowers`.
-- `obra/superpowers` can own the heavyweight workflow skills; `flow` stays focused on personal preferences and reusable companions.
-- If both plugins are installed and you want a lightweight session, invoke `/no-superpowers` at the start of the conversation.
+- It stays focused on personal preferences and reusable companions rather than heavyweight workflow orchestration.
 - This repository keeps its external-skill vendoring helper as a repo-local skill in `.github/skills/vendor-skill`.
 - This repository vendors external plugin payloads under `plugins/`; Context7 is the first example at `plugins/context7/`.
 - External skills should be vendored into `skills/`, not installed globally.
